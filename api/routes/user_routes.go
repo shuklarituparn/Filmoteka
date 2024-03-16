@@ -14,24 +14,24 @@ func UserRouter(mux *http.ServeMux) {
 	loginRoute := prefix + "/login"
 	refreshTokenRoute := prefix + "/refresh"
 
-	mux.Handle(registerRoute, middleware.IsAdmin(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	mux.Handle(registerRoute, http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodPost {
-			controllers.RegisterUser(config.GetInstance())(w, r)
+			controllers.RegisterUser(config.Get_Instance())(w, r)
 		} else {
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		}
-	})))
+	}))
 
 	mux.Handle(loginRoute, http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodPost {
-			controllers.LoginUser(config.GetInstance())(w, r)
+			controllers.LoginUser(config.Get_Instance())(w, r)
 		} else {
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		}
 	}))
 
 	mux.Handle(refreshTokenRoute, middleware.IsAuthenticated(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if r.Method == http.MethodPost {
+		if r.Method == http.MethodGet {
 			controllers.RefreshToken(w, r)
 		} else {
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)

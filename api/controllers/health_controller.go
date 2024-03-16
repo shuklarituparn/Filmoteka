@@ -8,12 +8,13 @@ import (
 	"github.com/charmbracelet/log"
 )
 
-type HealthCheckResponse struct {
-	Author      string    `json:"author"`
-	CurrentTime time.Time `json:"current_time"`
-	Status      string    `json:"status"`
-}
-
+// HealthCheck performs a health check and returns the status of the application.
+// @Summary Perform health check
+// @Tags Healthcheck
+// @ID health-check
+// @Produce json
+// @Success 200 {object} HealthCheckResponse "Health check response"
+// @Router /healthcheck [get]
 func HealthCheck(w http.ResponseWriter, r *http.Request) {
 	response := HealthCheckResponse{
 		Author:      "Rituparn Shukla",

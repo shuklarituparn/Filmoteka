@@ -7,6 +7,6 @@ scrape_configs:
     static_configs:
       - targets: ['prometheus:9090']
 
-  - job_name: 'filmotek-api'
+  - job_name: 'filmotek'
     static_configs:
-      - targets: ['filmotek-api:8080']
+      - targets: ['filmotek:8080']

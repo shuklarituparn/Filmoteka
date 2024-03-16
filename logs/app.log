@@ -60,3 +60,65 @@ SERVER_LOGS: 2024/03/15 20:21:09 Failed to update movie
 SERVER_LOGS: 2024/03/15 20:26:38 Request received: PUT /api/v1/movies/update
 SERVER_LOGS: 2024/03/15 20:26:38 Failed to update movie: ERROR: new row for relation "actors" violates check constraint "chk_actors_gender" (SQLSTATE 23514); ERROR: new row for relation "actors" violates check constraint "chk_actors_gender" (SQLSTATE 23514)
 SERVER_LOGS: 2024/03/15 20:26:38 Failed to update movie
+SERVER_LOGS: 2024/03/16 15:35:57 Error loading .env file
+SERVER_LOGS: 2024/03/16 15:35:57 Error connecting to the database: failed to connect to `host=port=0 user=password= database=sslmode=disable`: hostname resolving error (lookup port=0: no such host)
+SERVER_LOGS: 2024/03/16 15:35:57 failed to connect to `host=port=0 user=password= database=sslmode=disable`: hostname resolving error (lookup port=0: no such host)
+SERVER_LOGS: 2024/03/16 15:35:58 Error querying admin user: failed to connect to `host=port=0 user=password= database=sslmode=disable`: hostname resolving error (lookup port=0: no such host)
+SERVER_LOGS: 2024/03/16 15:35:58 Successfully connected to the database!
+SERVER_LOGS: 2024/03/16 15:35:58 PORT environment variable not set
+SERVER_LOGS: 2024/03/16 15:36:40 Successfully connected to the database!
+SERVER_LOGS: 2024/03/16 15:36:40 Server started on port 8080
+SERVER_LOGS: 2024/03/16 15:37:08 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/16 15:38:37 Request received: POST /api/v1/movies/create
+SERVER_LOGS: 2024/03/16 15:38:37 Request received: PUT /api/v1/movies/update
+SERVER_LOGS: 2024/03/16 15:38:37 Request received: DELETE /api/v1/movies/delete
+SERVER_LOGS: 2024/03/16 15:38:37 Request received: GET /api/v1/movies/get
+SERVER_LOGS: 2024/03/16 15:38:37 Request received: GET /api/v1/movies/all
+SERVER_LOGS: 2024/03/16 15:38:37 Request received: PATCH /api/v1/movies/patch
+SERVER_LOGS: 2024/03/16 15:38:37 Request received: POST /api/v1/actors/create
+SERVER_LOGS: 2024/03/16 15:38:37 Request received: PUT /api/v1/actors/update
+SERVER_LOGS: 2024/03/16 15:38:37 Request received: DELETE /api/v1/actors/delete
+SERVER_LOGS: 2024/03/16 15:38:37 Request received: GET /api/v1/actors/get
+SERVER_LOGS: 2024/03/16 15:38:37 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/16 15:38:37 Request received: PATCH /api/v1/actors/patch
+SERVER_LOGS: 2024/03/16 15:38:37 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/16 15:38:38 Request received: POST /api/v1/users/register
+SERVER_LOGS: 2024/03/16 15:38:38 Request received: POST /api/v1/users/register
+SERVER_LOGS: 2024/03/16 15:38:39 Error creating user: ERROR: duplicate key value violates unique constraint "idx_users_email" (SQLSTATE 23505)
+SERVER_LOGS: 2024/03/16 15:38:39 Failed to register user ERROR: duplicate key value violates unique constraint "idx_users_email" (SQLSTATE 23505)
+SERVER_LOGS: 2024/03/16 15:38:49 Request received: POST /api/v1/users/register
+SERVER_LOGS: 2024/03/16 15:38:49 Request received: POST /api/v1/users/register
+SERVER_LOGS: 2024/03/16 15:38:57 Request received: POST /api/v1/users/register
+SERVER_LOGS: 2024/03/16 15:38:57 Request received: POST /api/v1/users/register
+SERVER_LOGS: 2024/03/16 15:38:58 Error creating user: ERROR: duplicate key value violates unique constraint "idx_users_email" (SQLSTATE 23505)
+SERVER_LOGS: 2024/03/16 15:38:58 Failed to register user ERROR: duplicate key value violates unique constraint "idx_users_email" (SQLSTATE 23505)
+SERVER_LOGS: 2024/03/16 15:39:09 Request received: POST /api/v1/users/register
+SERVER_LOGS: 2024/03/16 15:39:09 Request received: POST /api/v1/users/register
+SERVER_LOGS: 2024/03/16 15:39:10 Error creating user: ERROR: duplicate key value violates unique constraint "idx_users_email" (SQLSTATE 23505)
+SERVER_LOGS: 2024/03/16 15:39:10 Failed to register user ERROR: duplicate key value violates unique constraint "idx_users_email" (SQLSTATE 23505)
+SERVER_LOGS: 2024/03/16 15:54:47 Error connecting to the database: failed to connect to `host=port=0 user=password= database=sslmode=disable`: hostname resolving error (lookup port=0: no such host)
+SERVER_LOGS: 2024/03/16 15:54:47 failed to connect to `host=port=0 user=password= database=sslmode=disable`: hostname resolving error (lookup port=0: no such host)
+SERVER_LOGS: 2024/03/16 15:54:48 Error querying admin user: failed to connect to `host=port=0 user=password= database=sslmode=disable`: hostname resolving error (lookup port=0: no such host)
+SERVER_LOGS: 2024/03/16 15:54:48 Successfully connected to the database!
+SERVER_LOGS: 2024/03/16 15:54:48 Server started on port 8080
+SERVER_LOGS: 2024/03/16 15:54:48 Something went wrong while starting the server!
+SERVER_LOGS: 2024/03/16 15:55:32 Error connecting to the database: failed to connect to `host=port=0 user=password= database=sslmode=disable`: hostname resolving error (lookup port=0: no such host)
+SERVER_LOGS: 2024/03/16 15:55:32 failed to connect to `host=port=0 user=password= database=sslmode=disable`: hostname resolving error (lookup port=0: no such host)
+SERVER_LOGS: 2024/03/16 15:55:33 Error querying admin user: failed to connect to `host=port=0 user=password= database=sslmode=disable`: hostname resolving error (lookup port=0: no such host)
+SERVER_LOGS: 2024/03/16 15:55:33 Successfully connected to the database!
+SERVER_LOGS: 2024/03/16 15:55:33 Server started on port 8080
+SERVER_LOGS: 2024/03/16 15:56:31 Error connecting to the database: failed to connect to `host=port=0 user=password= database=sslmode=disable`: hostname resolving error (lookup port=0: no such host)
+SERVER_LOGS: 2024/03/16 15:56:31 failed to connect to `host=port=0 user=password= database=sslmode=disable`: hostname resolving error (lookup port=0: no such host)
+SERVER_LOGS: 2024/03/16 15:56:32 Error querying admin user: failed to connect to `host=port=0 user=password= database=sslmode=disable`: hostname resolving error (lookup port=0: no such host)
+SERVER_LOGS: 2024/03/16 15:56:32 Successfully connected to the database!
+SERVER_LOGS: 2024/03/16 15:56:32 Server started on port 8080
+SERVER_LOGS: 2024/03/16 15:56:47 Error connecting to the database: failed to connect to `host=port=0 user=password= database=sslmode=disable`: hostname resolving error (lookup port=0: no such host)
+SERVER_LOGS: 2024/03/16 15:56:47 failed to connect to `host=port=0 user=password= database=sslmode=disable`: hostname resolving error (lookup port=0: no such host)
+SERVER_LOGS: 2024/03/16 15:56:48 Error querying admin user: failed to connect to `host=port=0 user=password= database=sslmode=disable`: hostname resolving error (lookup port=0: no such host)
+SERVER_LOGS: 2024/03/16 15:56:48 Successfully connected to the database!
+SERVER_LOGS: 2024/03/16 15:56:48 Server started on port 8080
+SERVER_LOGS: 2024/03/16 15:58:11 Successfully connected to the database!
+SERVER_LOGS: 2024/03/16 15:58:11 Server started on port 8080
+SERVER_LOGS: 2024/03/16 15:58:48 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/16 16:00:30 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/16 16:00:30 Invalid page_size

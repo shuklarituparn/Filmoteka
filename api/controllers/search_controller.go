@@ -12,6 +12,19 @@ import (
 	"gorm.io/gorm"
 )
 
+// SearchMovie searches for movies based on the provided query string.
+// @Summary Search for movies
+// @ID search-movies
+// @Produce json
+// @Tags Search Movies
+// @Security BearerAuth
+// @Param q query string true "Search query"
+// @Param sort_by query string false "Field to sort by (default rating)"
+// @Param sort_order query string false "Sort order (ASC or DESC, default DESC)"
+// @Success 200 {object} SearchMovieResponse "List of matching movies"
+// @Failure 400 {string} string "Invalid search query"
+// @Failure 500 {string} string "Error encoding response"
+// @Router /api/v1/search [get]
 func SearchMovie(db *gorm.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")

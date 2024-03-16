@@ -13,7 +13,7 @@ func SearchRouter(mux *http.ServeMux) {
 
 	mux.Handle(prefix, middleware.IsAuthenticated(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodGet {
-			controllers.SearchMovie(config.GetInstance())(w, r)
+			controllers.SearchMovie(config.Get_Instance())(w, r)
 		} else {
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		}

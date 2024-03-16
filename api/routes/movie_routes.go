@@ -14,7 +14,7 @@ func MovieRouter(mux *http.ServeMux) {
 	get_movie := prefix + "/get"
 	mux.Handle(get_movie, middleware.IsAuthenticated(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodGet {
-			controllers.ReadMovie(config.GetInstance())(w, r)
+			controllers.ReadMovie(config.Get_Instance())(w, r)
 		} else {
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		}
@@ -23,7 +23,7 @@ func MovieRouter(mux *http.ServeMux) {
 	all_movies := prefix + "/all"
 	mux.Handle(all_movies, middleware.IsAuthenticated(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodGet {
-			controllers.ReadAllMovies(config.GetInstance())(w, r)
+			controllers.ReadAllMovies(config.Get_Instance())(w, r)
 		} else {
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		}
@@ -32,7 +32,7 @@ func MovieRouter(mux *http.ServeMux) {
 	createRoute := prefix + "/create"
 	mux.Handle(createRoute, middleware.IsAdmin(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodPost {
-			controllers.CreateMovie(config.GetInstance())(w, r)
+			controllers.CreateMovie(config.Get_Instance())(w, r)
 		} else {
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		}
@@ -41,7 +41,7 @@ func MovieRouter(mux *http.ServeMux) {
 	updateRoute := prefix + "/update"
 	mux.Handle(updateRoute, middleware.IsAdmin(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodPut {
-			controllers.UpdateMovie(config.GetInstance())(w, r)
+			controllers.UpdateMovie(config.Get_Instance())(w, r)
 		} else {
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		}
@@ -50,7 +50,7 @@ func MovieRouter(mux *http.ServeMux) {
 	patchRoute := prefix + "/patch"
 	mux.Handle(patchRoute, middleware.IsAdmin(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodPatch {
-			controllers.PatchMovie(config.GetInstance())(w, r)
+			controllers.PatchMovie(config.Get_Instance())(w, r)
 		} else {
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		}
@@ -59,7 +59,7 @@ func MovieRouter(mux *http.ServeMux) {
 	deleteRoute := prefix + "/delete"
 	mux.Handle(deleteRoute, middleware.IsAdmin(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodDelete {
-			controllers.DeleteMovie(config.GetInstance())(w, r)
+			controllers.DeleteMovie(config.Get_Instance())(w, r)
 		} else {
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		}

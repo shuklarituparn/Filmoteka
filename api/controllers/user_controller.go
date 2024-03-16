@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strings"
 
 	"github.com/charmbracelet/log"
 	"github.com/go-playground/validator"
@@ -14,10 +15,17 @@ import (
 	"gorm.io/gorm"
 )
 
-type ErrorResponse struct {
-	Error string `json:"error"`
-}
-
+// RegisterUser handles user registration.
+// @Summary Register a new user
+// @Description Register a new user with email and password
+// @Tags Authentication
+// @Accept json
+// @Produce json
+// @Param request body models.RegisterUserModel true "User information"
+// @Success 201 {object} CreateUserResponse "User Created Successfully"
+// @Failure 400 {object} ErrorResponse "Invalid request payload"
+// @Failure 500 {object} ErrorResponse "Internal Server Error"
+// @Router /api/v1/users/register [post]
 func RegisterUser(db *gorm.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		file_logger.Println("Request received:", r.Method, r.URL.Path)
@@ -68,6 +76,18 @@ func RegisterUser(db *gorm.DB) http.HandlerFunc {
 	}
 }
 
+// LoginUser handles user login.
+// @Summary Log in a user
+// @Description Log in a user with email and password
+// @Tags Authentication
+// @Accept json
+// @Produce json
+// @Param request body models.LoginUserModel true "User credentials"
+// @Success 200 {object} LoginResponse "Logged In Successfully"
+// @Failure 400 {object} ErrorResponse "Invalid request payload"
+// @Failure 401 {object} ErrorResponse "Invalid email or password"
+// @Failure 500 {object} ErrorResponse "Internal Server Error"
+// @Router /api/v1/users/login [post]
 func LoginUser(db *gorm.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		file_logger.Println("Request received:", r.Method, r.URL.Path)
@@ -114,12 +134,23 @@ func LoginUser(db *gorm.DB) http.HandlerFunc {
 	}
 }
 
+// RefreshToken handles refreshing JWT tokens.
+// @Summary Refresh JWT tokens
+// @Description Refresh JWT access and refresh tokens
+// @Tags Authentication
+// @Accept json
+// @Security BearerAuth
+// @Produce json
+// @Success 200 {object} RefreshTokenResponse "New access and refresh tokens"
+// @Failure 400 {object} ErrorResponse "Invalid or expired token"
+// @Failure 500 {object} ErrorResponse "Internal Server Error"
+// @Router /api/v1/users/refresh [get]
 func RefreshToken(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	file_logger.Println("Request received:", r.Method, r.URL.Path)
-	tokenString := r.Header.Get("Authorization")
+	tokenString := strings.Split(r.Header.Get("Authorization"), " ")[1]
 	if tokenString == "" {
-		tokenString = r.URL.Query().Get("token")
+		common.ErrorResponse(w, http.StatusBadRequest, "Please supply Token")
 	}
 	claims, err := jwt.VerifyToken(tokenString)
 	if err != nil {

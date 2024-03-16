@@ -10,17 +10,30 @@ import (
 	"strings"
 
 	"github.com/charmbracelet/log"
-	"github.com/go-playground/validator"
 	"github.com/shuklarituparn/Filmoteka/api/models"
 	"github.com/shuklarituparn/Filmoteka/internal/logger"
+	"github.com/shuklarituparn/Filmoteka/internal/prometheus"
 	"github.com/shuklarituparn/Filmoteka/pkg/common"
 	"gorm.io/gorm"
 )
 
 var file_logger = logger.SetupLogger()
 
+// CreateActor creates a new actor.
+// @Summary Create a new actor
+// @ID create-actor
+// @Accept json
+// @Produce json
+// @Tags Actors
+// @Security BearerAuth
+// @Param actor body models.CreateActorModel true "Actor object to be created"
+// @Success 201 {object} CreateActorResponse "Actor Added"
+// @Failure 400 {string} string "Invalid request payload"
+// @Failure 500 {string} string "Internal Server Error"
+// @Router /api/v1/actors/create [post]
 func CreateActor(db *gorm.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		prometheus.CreateActorApiPingCounter.Inc()
 		w.Header().Set("Content-Type", "application/json")
 		var actor models.Actor
 		if err := json.NewDecoder(r.Body).Decode(&actor); err != nil {
@@ -28,15 +41,13 @@ func CreateActor(db *gorm.DB) http.HandlerFunc {
 			return
 		}
 		defer r.Body.Close()
-		validate := validator.New()
-		if err := validate.Struct(actor); err != nil {
-			errorsMap := make(map[string]interface{})
-			for _, e := range err.(validator.ValidationErrors) {
-				errorsMap[e.Field()] = e.Value()
-			}
-			errJSON, _ := json.Marshal(errorsMap)
-			common.ErrorResponse(w, http.StatusBadRequest, string(errJSON))
+		if !common.ValidateAndRespond(w, actor) {
 			return
+		}
+		for _, movie := range actor.Movies {
+			if !common.ValidateAndRespond(w, movie) {
+				return
+			}
 		}
 		tx_err := db.Transaction(func(tx *gorm.DB) error {
 			if err := tx.Create(&actor).Error; err != nil {
@@ -56,8 +67,23 @@ func CreateActor(db *gorm.DB) http.HandlerFunc {
 	}
 }
 
+// ReadAllActor returns a list of actors with pagination support.
+// @Summary Get all actors with pagination
+// @ID read-all-actors
+// @Produce json
+// @Tags Actors
+// @Param page query integer true "Page number"
+// @Param page_size query integer true "Number of items per page"
+// @Param sort_by query string false "Field to sort by (default birth_date)"
+// @Param sort_order query string false "Sort order (ASC or DESC, default DESC)"
+// @Success 200 {object} ReadAllActorResponse "List of actors"
+// @Failure 400 {string} string "Invalid page_size or page"
+// @Failure 500 {string} string "Internal Server Error"
+// @Security BearerAuth
+// @Router /api/v1/actors/all [get]
 func ReadAllActor(db *gorm.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		prometheus.ReadAllActorApiPingCounter.Inc()
 		w.Header().Set("Content-Type", "application/json")
 		var actors []models.Actor
 		var totalActorsCount int64
@@ -109,8 +135,21 @@ func ReadAllActor(db *gorm.DB) http.HandlerFunc {
 	}
 }
 
+// ReadActor returns details of a specific actor by ID.
+// @Summary Get actor by ID
+// @ID read-actor-by-id
+// @Produce json
+// @Tags Actors
+// @Security BearerAuth
+// @Param id query string true "Actor ID"
+// @Success 200 {object} ReadActorResponse "Actor details"
+// @Failure 400 {string} string "Actor ID is required"
+// @Failure 404 {string} string "Actor not found"
+// @Failure 500 {string} string "Failed to fetch actor"
+// @Router /api/v1/actors/get [get]
 func ReadActor(db *gorm.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		prometheus.ReadOneActorApiPingCounter.Inc()
 		w.Header().Set("Content-Type", "application/json")
 		var actor models.Actor
 		actorID := r.URL.Query().Get("id")
@@ -144,8 +183,21 @@ func ReadActor(db *gorm.DB) http.HandlerFunc {
 	}
 }
 
+// UpdateActor updates an existing actor.
+// @Summary Update an existing actor
+// @ID update-actor
+// @Accept json
+// @Security BearerAuth
+// @Produce json
+// @Tags Actors
+// @Param actor body models.UpdateActorModel true "Actor object to be updated"
+// @Success 200 {object} UpdateActorResponse "Actor Updated successfully"
+// @Failure 400 {string} string "Invalid request payload"
+// @Failure 500 {string} string "Failed to update actor"
+// @Router /api/v1/actors/update [put]
 func UpdateActor(db *gorm.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		prometheus.UpdateActorApiPingCounter.Inc()
 		w.Header().Set("Content-Type", "application/json")
 		var actor models.Actor
 		var response models.Actor
@@ -154,18 +206,16 @@ func UpdateActor(db *gorm.DB) http.HandlerFunc {
 			return
 		}
 		defer r.Body.Close()
-		validate := validator.New()
-		if err := validate.Struct(actor); err != nil {
-			errorsMap := make(map[string]interface{})
-			for _, e := range err.(validator.ValidationErrors) {
-				errorsMap[e.Field()] = e.Value()
-			}
-			errJSON, _ := json.Marshal(errorsMap)
-			common.ErrorResponse(w, http.StatusBadRequest, string(errJSON))
+		if !common.ValidateAndRespond(w, actor) {
 			return
 		}
+		for _, movie := range actor.Movies {
+			if !common.ValidateAndRespond(w, movie) {
+				return
+			}
+		}
 		tx_err := db.Transaction(func(tx *gorm.DB) error {
-			if err := tx.Save(&actor).Error; err != nil {
+			if err := tx.Session(&gorm.Session{FullSaveAssociations: true}).Where("id = ?", actor.ID).Save(&actor).Error; err != nil {
 				log.Error("Error updating actor:", err.Error())
 				file_logger.Println("Error updating actor:", err.Error())
 				common.ErrorResponse(w, http.StatusInternalServerError, "Failed to update actor")
@@ -192,8 +242,20 @@ func UpdateActor(db *gorm.DB) http.HandlerFunc {
 	}
 }
 
+// DeleteActor deletes an actor and its associations from the database.
+// @Summary Delete an actor
+// @ID delete-actor
+// @Produce json
+// @Tags Actors
+// @Security BearerAuth
+// @Param id query string true "Actor ID"
+// @Success 200 {object} DeleteActorResponse "Actor deleted successfully"
+// @Failure 400 {string} string "Actor ID is required"
+// @Failure 500 {string} string "Failed to delete actor or its associations"
+// @Router /api/v1/actors/delete [delete]
 func DeleteActor(db *gorm.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		prometheus.DeleteActorApiPingCounter.Inc()
 		w.Header().Set("Content-Type", "application/json")
 		actorID := r.URL.Query().Get("id")
 		if actorID == "" {
@@ -230,8 +292,22 @@ func DeleteActor(db *gorm.DB) http.HandlerFunc {
 	}
 }
 
+// PatchActor updates an existing actor with the provided patch data.
+// @Summary Update an existing actor partially
+// @ID patch-actor
+// @Accept json
+// @Security BearerAuth
+// @Produce json
+// @Tags Actors
+// @Param id query string true "Actor ID"
+// @Param patchData body models.CreateActorModel true "Patch data for updating the actor"
+// @Success 200 {object} PatchActorResponse "Actor updated successfully"
+// @Failure 400 {string} string "Invalid request payload"
+// @Failure 500 {string} string "Failed to update actor or its associations"
+// @Router /api/v1/actors/patch [patch]
 func PatchActor(db *gorm.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		prometheus.PatchActorApiPingCounter.Inc()
 		w.Header().Set("Content-Type", "application/json")
 		var patchData map[string]interface{}
 		if err := json.NewDecoder(r.Body).Decode(&patchData); err != nil {
@@ -244,35 +320,43 @@ func PatchActor(db *gorm.DB) http.HandlerFunc {
 			common.ErrorResponse(w, http.StatusBadRequest, "Actor ID is required")
 			return
 		}
-		var patchMovies []interface{}
-		if moviesInterface, ok := patchData["movies"].([]interface{}); ok {
-			patchMovies = moviesInterface
-			delete(patchData, "movies")
+		movies, ok := patchData["movies"].([]interface{})
+		if !ok {
+			common.ErrorResponse(w, http.StatusBadRequest, "Movies data is missing or invalid")
+			return
 		}
+		delete(patchData, "movies")
 		tx_err := db.Transaction(func(tx *gorm.DB) error {
+			for _, movie := range movies {
+				movieMap, ok := movie.(map[string]interface{})
+				if !ok {
+					return errors.ErrUnsupported
+				}
+				if err := tx.Model(&models.Movie{}).Where("id=?", movieMap["id"]).Updates(movieMap).Error; err != nil {
+					log.Error("Error updating movie:", err.Error())
+					file_logger.Println("Error updating movie:", err.Error())
+					return err
+				}
+				query := "SELECT COUNT(*) FROM actor_movies WHERE actor_id = ? AND movie_id = ?"
+				var count int64
+				if err := tx.Raw(query, actorID, movieMap["id"]).Row().Scan(&count); err != nil {
+					log.Error("Error counting actor-movie relationship:", err.Error())
+					file_logger.Println("Error counting actor-movie relationship:", err.Error())
+					return err
+				}
+				if count == 0 {
+					query := "INSERT INTO actor_movies (actor_id, movie_id) VALUES (?, ?)"
+					if err := tx.Exec(query, actorID, movieMap["id"]).Error; err != nil {
+						log.Error("Error inserting actor-movie relationship:", err.Error())
+						file_logger.Println("Error inserting actor-movie relationship:", err.Error())
+						return err
+					}
+				}
+			}
 			if err := tx.Model(&models.Actor{}).Where("id = ?", actorID).Updates(patchData).Error; err != nil {
 				log.Error("Error updating actor:", err.Error())
 				file_logger.Println("Error updating actor:", err.Error())
 				return err
-			}
-			for _, movieID := range patchMovies {
-				var actor models.Actor
-				if err := tx.First(&actor, actorID).Error; err != nil {
-					log.Error("Error finding actor:", err.Error())
-					file_logger.Println("Error finding actor:", err.Error())
-					return err
-				}
-				var movie models.Movie
-				if err := tx.First(&movie, movieID).Error; err != nil {
-					log.Error("Error finding movie:", err.Error())
-					file_logger.Println("Error finding movie:", err.Error())
-					return err
-				}
-				if err := tx.Model(&actor).Association("Movies").Append(&movie); err != nil {
-					log.Error("Error appending movie association:", err.Error())
-					file_logger.Println("Error appending movie association:", err.Error())
-					return err
-				}
 			}
 			return nil
 		})
@@ -281,7 +365,7 @@ func PatchActor(db *gorm.DB) http.HandlerFunc {
 		}
 		w.WriteHeader(http.StatusOK)
 		resErr := json.NewEncoder(w).Encode(map[string]interface{}{
-			"message": "Movie updated successfully",
+			"message": "Actor updated successfully",
 		})
 		if resErr != nil {
 			log.Error("Error encoding JSON:", resErr.Error())

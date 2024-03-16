@@ -1,7 +1,6 @@
 package config
 
 import (
-	"errors"
 	"fmt"
 	"os"
 	"strconv"
@@ -20,54 +19,54 @@ import (
 
 var db *gorm.DB
 
-func GetInstance() *gorm.DB {
+func Get_Instance() *gorm.DB {
 	return db
 }
 
-func ConnectDb() {
-	var fileLogger = logger.SetupLogger()
+func Connect_DB() {
+	var file_logger = logger.SetupLogger()
 
 	var (
-		host     = os.Getenv("DB_HOST")
-		port     = os.Getenv("DB_PORT")
-		user     = os.Getenv("DB_USER")
-		password = os.Getenv("DB_PASSWORD")
-		dbname   = os.Getenv("DB_NAME")
+		host     = os.Getenv("POSTGRES_HOST")
+		port     = os.Getenv("POSTGRES_PORT")
+		user     = os.Getenv("POSTGRES_USER")
+		password = os.Getenv("POSTGRES_PASSWORD")
+		dbname   = os.Getenv("POSTGRES_DB")
 	)
-	portInt, _ := strconv.Atoi(port)
+	port_int, _ := strconv.Atoi(port)
 	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
 		"password=%s dbname=%s sslmode=disable",
-		host, portInt, user, password, dbname)
+		host, port_int, user, password, dbname)
 
-	postgresqlDb, err := gorm.Open(postgres.Open(psqlInfo), &gorm.Config{})
+	postgresql_db, err := gorm.Open(postgres.Open(psqlInfo), &gorm.Config{})
 	if err != nil {
 		log.Error("Error connecting to the database:", err)
-		fileLogger.Println("Error connecting to the database:", err)
+		file_logger.Println("Error connecting to the database:", err)
 	}
-	migrationErr := postgresqlDb.AutoMigrate(&models.Actor{}, &models.User{}, &models.Movie{})
-	if migrationErr != nil {
-		log.Error(migrationErr)
-		fileLogger.Println(migrationErr)
+	migration_err := postgresql_db.AutoMigrate(&models.Actor{}, &models.User{}, &models.Movie{})
+	if migration_err != nil {
+		log.Error(migration_err)
+		file_logger.Println(migration_err)
 	}
 	var adminUser models.User
-	adminPassword, _ := hashing.HashPassword("adminpassword")
-	if result := postgresqlDb.First(&adminUser, "role = ?", "ADMIN"); result.Error != nil {
-		if errors.Is(result.Error, gorm.ErrRecordNotFound) {
+	admin_password, _ := hashing.HashPassword("adminpassword")
+	if result := postgresql_db.First(&adminUser, "role = ?", "ADMIN"); result.Error != nil {
+		if result.Error == gorm.ErrRecordNotFound {
 			admin := models.User{
 				Email:    "admin@example.com",
-				Password: adminPassword,
+				Password: admin_password,
 				Role:     "ADMIN",
 			}
-			if err := postgresqlDb.Create(&admin).Error; err != nil {
+			if err := postgresql_db.Create(&admin).Error; err != nil {
 				log.Error("Error creating admin user:", err)
-				fileLogger.Println("Error creating admin user:", err)
+				file_logger.Println("Error creating admin user:", err)
 			}
 		} else {
 			log.Error("Error querying admin user:", result.Error)
-			fileLogger.Println("Error querying admin user:", result.Error)
+			file_logger.Println("Error querying admin user:", result.Error)
 		}
 	}
-	db = postgresqlDb
+	db = postgresql_db
 	log.Info("Successfully connected!")
-	fileLogger.Println("Successfully connected to the database!")
+	file_logger.Println("Successfully connected to the database!")
 }
