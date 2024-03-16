@@ -122,3 +122,19 @@ SERVER_LOGS: 2024/03/16 15:58:11 Server started on port 8080
 SERVER_LOGS: 2024/03/16 15:58:48 Request received: POST /api/v1/users/login
 SERVER_LOGS: 2024/03/16 16:00:30 Request received: GET /api/v1/actors/all
 SERVER_LOGS: 2024/03/16 16:00:30 Invalid page_size
+SERVER_LOGS: 2024/03/16 16:54:53 Successfully connected to the database!
+SERVER_LOGS: 2024/03/16 16:54:53 Server started on port 8080
+SERVER_LOGS: 2024/03/16 16:58:11 Successfully connected to the database!
+SERVER_LOGS: 2024/03/16 16:58:11 Server started on port 8080
+SERVER_LOGS: 2024/03/16 16:59:23 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/16 16:59:56 Request received: GET /api/v1/actors/get
+SERVER_LOGS: 2024/03/16 17:00:22 Request received: DELETE /api/v1/actors/delete
+SERVER_LOGS: 2024/03/16 18:55:30 Successfully connected to the database!
+SERVER_LOGS: 2024/03/16 18:55:30 Server started on port 8080
+SERVER_LOGS: 2024/03/16 18:56:06 Successfully connected to the database!
+SERVER_LOGS: 2024/03/16 18:56:06 Server started on port 8080
+SERVER_LOGS: 2024/03/16 20:00:24 Successfully connected to the database!
+SERVER_LOGS: 2024/03/16 20:00:24 Server started on port 8080
+SERVER_LOGS: 2024/03/16 20:00:24 Something went wrong while starting the server!
+SERVER_LOGS: 2024/03/16 20:00:54 Successfully connected to the database!
+SERVER_LOGS: 2024/03/16 20:00:54 Server started on port 8080

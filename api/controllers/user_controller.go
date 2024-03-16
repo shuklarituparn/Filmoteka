@@ -3,6 +3,7 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
 	"strings"
 
@@ -28,16 +29,22 @@ import (
 // @Router /api/v1/users/register [post]
 func RegisterUser(db *gorm.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		file_logger.Println("Request received:", r.Method, r.URL.Path)
+		fileLogger.Println("Request received:", r.Method, r.URL.Path)
 		w.Header().Set("Content-Type", "application/json")
 		var user models.User
 		if err := json.NewDecoder(r.Body).Decode(&user); err != nil {
 			log.Error("Error decoding JSON:", err.Error())
-			file_logger.Println("Error decoding JSON:", err.Error())
+			fileLogger.Println("Error decoding JSON:", err.Error())
 			common.ErrorResponse(w, http.StatusBadRequest, "Invalid request payload")
 			return
 		}
-		defer r.Body.Close()
+		defer func(Body io.ReadCloser) {
+			err := Body.Close()
+			if err != nil {
+				common.ErrorResponse(w, http.StatusInternalServerError, "Internal Server Error")
+
+			}
+		}(r.Body)
 		user.Role = "USER"
 		validate := validator.New()
 		if err := validate.Struct(user); err != nil {
@@ -57,7 +64,7 @@ func RegisterUser(db *gorm.DB) http.HandlerFunc {
 		user.Password = hashedPassword
 		if err := db.Model(&models.User{}).Create(&user).Error; err != nil {
 			log.Error("Error creating user:", err.Error())
-			file_logger.Println("Error creating user:", err.Error())
+			fileLogger.Println("Error creating user:", err.Error())
 			common.ErrorResponse(w, http.StatusInternalServerError, fmt.Sprintf("Failed to register user %v", err.Error()))
 			return
 		}
@@ -70,7 +77,7 @@ func RegisterUser(db *gorm.DB) http.HandlerFunc {
 		})
 		if resErr != nil {
 			log.Error("Error encoding JSON:", resErr.Error())
-			file_logger.Println("Error encoding JSON:", resErr.Error())
+			fileLogger.Println("Error encoding JSON:", resErr.Error())
 			common.ErrorResponse(w, http.StatusInternalServerError, "Internal Server Error")
 		}
 	}
@@ -90,18 +97,24 @@ func RegisterUser(db *gorm.DB) http.HandlerFunc {
 // @Router /api/v1/users/login [post]
 func LoginUser(db *gorm.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		file_logger.Println("Request received:", r.Method, r.URL.Path)
+		fileLogger.Println("Request received:", r.Method, r.URL.Path)
 		w.Header().Set("Content-Type", "application/json")
 		var user models.User
 		if err := json.NewDecoder(r.Body).Decode(&user); err != nil {
 			common.ErrorResponse(w, http.StatusBadRequest, "Invalid request payload")
 			return
 		}
-		defer r.Body.Close()
+		defer func(Body io.ReadCloser) {
+			err := Body.Close()
+			if err != nil {
+				common.ErrorResponse(w, http.StatusInternalServerError, "Internal Server Error")
+
+			}
+		}(r.Body)
 		var storedUser models.User
 		if err := db.Model(&models.User{}).Where("email = ?", user.Email).First(&storedUser).Error; err != nil {
 			log.Error("Error finding user:", err.Error())
-			file_logger.Println("Error finding user:", err.Error())
+			fileLogger.Println("Error finding user:", err.Error())
 			common.ErrorResponse(w, http.StatusUnauthorized, "Invalid email or password")
 			return
 		}
@@ -113,7 +126,7 @@ func LoginUser(db *gorm.DB) http.HandlerFunc {
 		refresh, err := jwt.GetJWTToken(user.Email, storedUser.Role, 5)
 		if err != nil {
 			log.Error("Error generating token:", err.Error())
-			file_logger.Println("Error generating token:", err.Error())
+			fileLogger.Println("Error generating token:", err.Error())
 			common.ErrorResponse(w, http.StatusInternalServerError, err.Error())
 			return
 		}
@@ -128,7 +141,7 @@ func LoginUser(db *gorm.DB) http.HandlerFunc {
 		})
 		if resErr != nil {
 			log.Error("Error encoding JSON:", resErr.Error())
-			file_logger.Println("Error encoding JSON:", resErr.Error())
+			fileLogger.Println("Error encoding JSON:", resErr.Error())
 			common.ErrorResponse(w, http.StatusInternalServerError, "Internal Server Error")
 		}
 	}
@@ -147,7 +160,7 @@ func LoginUser(db *gorm.DB) http.HandlerFunc {
 // @Router /api/v1/users/refresh [get]
 func RefreshToken(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	file_logger.Println("Request received:", r.Method, r.URL.Path)
+	fileLogger.Println("Request received:", r.Method, r.URL.Path)
 	tokenString := strings.Split(r.Header.Get("Authorization"), " ")[1]
 	if tokenString == "" {
 		common.ErrorResponse(w, http.StatusBadRequest, "Please supply Token")
@@ -162,7 +175,7 @@ func RefreshToken(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		log.Error("Error generating new token:", err.Error())
-		file_logger.Println("Error generating new token:", err.Error())
+		fileLogger.Println("Error generating new token:", err.Error())
 		common.ErrorResponse(w, http.StatusInternalServerError, "Failed to generate new token")
 		return
 	}
@@ -170,7 +183,7 @@ func RefreshToken(w http.ResponseWriter, r *http.Request) {
 	resErr := json.NewEncoder(w).Encode(map[string]string{"token": newToken, "refresh": refresh})
 	if resErr != nil {
 		log.Error("Error encoding JSON:", resErr.Error())
-		file_logger.Println("Error encoding JSON:", resErr.Error())
+		fileLogger.Println("Error encoding JSON:", resErr.Error())
 		common.ErrorResponse(w, http.StatusInternalServerError, "Internal Server Error")
 	}
 }

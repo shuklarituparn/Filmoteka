@@ -54,7 +54,7 @@ func SearchMovie(db *gorm.DB) http.HandlerFunc {
 			Find(&movies)
 		if err := json.NewEncoder(w).Encode(map[string]interface{}{"data": movies}); err != nil {
 			log.Error("Error encoding response:", err.Error())
-			file_logger.Println("Error encoding response:", err.Error())
+			fileLogger.Println("Error encoding response:", err.Error())
 			common.ErrorResponse(w, http.StatusInternalServerError, "Error encoding response")
 			return
 		}

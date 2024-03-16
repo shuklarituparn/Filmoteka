@@ -14,6 +14,7 @@ type Actor struct {
 	BirthDate string  `gorm:"not null" json:"birth_date" validate:"required,validDate"`
 	Movies    []Movie `gorm:"many2many:actor_movies;" json:"movies,omitempty"`
 }
+
 type CreateActorModel struct {
 	FirstName string  `json:"first_name" validate:"required,max=100"`
 	LastName  string  `json:"last_name" validate:"required,max=100"`

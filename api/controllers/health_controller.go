@@ -24,7 +24,7 @@ func HealthCheck(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	if err := json.NewEncoder(w).Encode(response); err != nil {
 		log.Error("Error encoding JSON:", err.Error())
-		file_logger.Println("Error encoding JSON:", err.Error())
+		fileLogger.Println("Error encoding JSON:", err.Error())
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}

@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"io"
 	"math"
 	"net/http"
 	"strconv"
@@ -35,11 +36,17 @@ func CreateMovie(db *gorm.DB) http.HandlerFunc {
 		var movie models.Movie
 		if err := json.NewDecoder(r.Body).Decode(&movie); err != nil {
 			log.Error("Invalid request payload:", err.Error())
-			file_logger.Println("Invalid request payload:", err.Error())
+			fileLogger.Println("Invalid request payload:", err.Error())
 			common.ErrorResponse(w, http.StatusBadRequest, "Invalid request payload")
 			return
 		}
-		defer r.Body.Close()
+		defer func(Body io.ReadCloser) {
+			err := Body.Close()
+			if err != nil {
+				common.ErrorResponse(w, http.StatusInternalServerError, "Internal Server Error")
+
+			}
+		}(r.Body)
 		if !common.ValidateAndRespond(w, movie) {
 			return
 		}
@@ -48,16 +55,16 @@ func CreateMovie(db *gorm.DB) http.HandlerFunc {
 				return
 			}
 		}
-		tx_err := db.Transaction(func(tx *gorm.DB) error {
+		txErr := db.Transaction(func(tx *gorm.DB) error {
 			if err := tx.Create(&movie).Error; err != nil {
 				log.Error("Failed to create movie:", err.Error())
-				file_logger.Println("Failed to create movie:", err.Error())
+				fileLogger.Println("Failed to create movie:", err.Error())
 				common.ErrorResponse(w, http.StatusInternalServerError, fmt.Sprintf("%v", err.Error()))
 				return err
 			}
 			return nil
 		})
-		if tx_err != nil {
+		if txErr != nil {
 			return
 		}
 		w.WriteHeader(http.StatusCreated)
@@ -67,7 +74,7 @@ func CreateMovie(db *gorm.DB) http.HandlerFunc {
 		})
 		if resErr != nil {
 			log.Error("Error encoding JSON:", resErr.Error())
-			file_logger.Println("Error encoding JSON:", resErr.Error())
+			fileLogger.Println("Error encoding JSON:", resErr.Error())
 			common.ErrorResponse(w, http.StatusInternalServerError, "Internal Server Error")
 		}
 	}
@@ -112,7 +119,7 @@ func ReadAllMovies(db *gorm.DB) http.HandlerFunc {
 		if sortOrder != "ASC" && sortOrder != "DESC" {
 			sortOrder = "DESC"
 		}
-		tx_err := db.Transaction(func(tx *gorm.DB) error {
+		txErr := db.Transaction(func(tx *gorm.DB) error {
 			query := db.Model(&movies).Limit(pageSize).Offset(offset).Order(fmt.Sprintf("%s %s", sortBy, sortOrder))
 			if err := query.Preload("Actors").Preload("Actors.Movies").Find(&movies).Error; err != nil {
 				common.ErrorResponse(w, http.StatusInternalServerError, "Something went wrong")
@@ -124,7 +131,7 @@ func ReadAllMovies(db *gorm.DB) http.HandlerFunc {
 			}
 			return nil
 		})
-		if tx_err != nil {
+		if txErr != nil {
 			return
 		}
 		totalPages := int(math.Ceil(float64(totalMoviesCount) / float64(pageSize)))
@@ -161,20 +168,20 @@ func ReadMovie(db *gorm.DB) http.HandlerFunc {
 			common.ErrorResponse(w, http.StatusBadRequest, "Movie ID is required")
 			return
 		}
-		tx_err := db.Transaction(func(tx *gorm.DB) error {
+		txErr := db.Transaction(func(tx *gorm.DB) error {
 			if err := tx.Preload("Actors").Preload("Actors.Movies").First(&movie, movieID).Error; err != nil {
 				if errors.Is(err, gorm.ErrRecordNotFound) {
 					common.ErrorResponse(w, http.StatusNotFound, "Movie not found")
 					return err
 				}
 				log.Error("Error fetching movie:", err.Error())
-				file_logger.Println("Error fetching movie:", err.Error())
+				fileLogger.Println("Error fetching movie:", err.Error())
 				common.ErrorResponse(w, http.StatusInternalServerError, "Internal Server Error")
 				return err
 			}
 			return nil
 		})
-		if tx_err != nil {
+		if txErr != nil {
 			return
 		}
 		w.WriteHeader(http.StatusOK)
@@ -183,7 +190,7 @@ func ReadMovie(db *gorm.DB) http.HandlerFunc {
 		})
 		if resErr != nil {
 			log.Error("Error encoding JSON:", resErr.Error())
-			file_logger.Println("Error encoding JSON:", resErr.Error())
+			fileLogger.Println("Error encoding JSON:", resErr.Error())
 			common.ErrorResponse(w, http.StatusInternalServerError, "Internal Server Error")
 		}
 	}
@@ -211,7 +218,13 @@ func UpdateMovie(db *gorm.DB) http.HandlerFunc {
 			common.ErrorResponse(w, http.StatusBadRequest, "Invalid request payload")
 			return
 		}
-		defer r.Body.Close()
+		defer func(Body io.ReadCloser) {
+			err := Body.Close()
+			if err != nil {
+				common.ErrorResponse(w, http.StatusInternalServerError, "Internal Server Error")
+
+			}
+		}(r.Body)
 		if !common.ValidateAndRespond(w, movie) {
 			return
 		}
@@ -220,22 +233,22 @@ func UpdateMovie(db *gorm.DB) http.HandlerFunc {
 				return
 			}
 		}
-		tx_err := db.Transaction(func(tx *gorm.DB) error {
+		txErr := db.Transaction(func(tx *gorm.DB) error {
 			if err := tx.Session(&gorm.Session{FullSaveAssociations: true}).Where("id = ?", movie.ID).Save(&movie).Error; err != nil {
 				log.Error("Failed to update movie:", err.Error())
-				file_logger.Println("Failed to update movie:", err.Error())
+				fileLogger.Println("Failed to update movie:", err.Error())
 				common.ErrorResponse(w, http.StatusInternalServerError, "Failed to update movie")
 				return err
 			}
 			if err := tx.Preload("Actors").Preload("Actors.Movies").Find(&response, movie.ID).Error; err != nil {
 				log.Error("Failed to update movie:", err.Error())
-				file_logger.Println("Failed to update movie:", err.Error())
+				fileLogger.Println("Failed to update movie:", err.Error())
 				common.ErrorResponse(w, http.StatusInternalServerError, "Failed to update movie")
 				return err
 			}
 			return nil
 		})
-		if tx_err != nil {
+		if txErr != nil {
 			return
 		}
 		w.WriteHeader(http.StatusOK)
@@ -269,10 +282,10 @@ func DeleteMovie(db *gorm.DB) http.HandlerFunc {
 			common.ErrorResponse(w, http.StatusBadRequest, "Movie ID is required")
 			return
 		}
-		tx_err := db.Transaction(func(tx *gorm.DB) error {
+		txErr := db.Transaction(func(tx *gorm.DB) error {
 			if err := tx.Exec("DELETE FROM actor_movies WHERE movie_id = ?", movieID).Error; err != nil {
 				log.Error("Failed to delete Association:", err.Error())
-				file_logger.Println("Failed to delete Association:", err.Error())
+				fileLogger.Println("Failed to delete Association:", err.Error())
 				common.ErrorResponse(w, http.StatusInternalServerError, "Failed to delete Association")
 				return err
 			}
@@ -282,7 +295,7 @@ func DeleteMovie(db *gorm.DB) http.HandlerFunc {
 			}
 			return nil
 		})
-		if tx_err != nil {
+		if txErr != nil {
 			return
 		}
 		w.WriteHeader(http.StatusOK)
@@ -291,7 +304,7 @@ func DeleteMovie(db *gorm.DB) http.HandlerFunc {
 		})
 		if resErr != nil {
 			log.Error("Error encoding JSON:", resErr.Error())
-			file_logger.Println("Error encoding JSON:", resErr.Error())
+			fileLogger.Println("Error encoding JSON:", resErr.Error())
 			common.ErrorResponse(w, http.StatusInternalServerError, "Internal Server Error")
 		}
 	}
@@ -317,11 +330,17 @@ func PatchMovie(db *gorm.DB) http.HandlerFunc {
 		var patchData map[string]interface{}
 		if err := json.NewDecoder(r.Body).Decode(&patchData); err != nil {
 			log.Error("Invalid request payload:", err.Error())
-			file_logger.Println("Invalid request payload:", err.Error())
+			fileLogger.Println("Invalid request payload:", err.Error())
 			common.ErrorResponse(w, http.StatusBadRequest, "Invalid request payload")
 			return
 		}
-		defer r.Body.Close()
+		defer func(Body io.ReadCloser) {
+			err := Body.Close()
+			if err != nil {
+				common.ErrorResponse(w, http.StatusInternalServerError, "Internal Server Error")
+
+			}
+		}(r.Body)
 		movieID := r.URL.Query().Get("id")
 		if movieID == "" {
 			common.ErrorResponse(w, http.StatusBadRequest, "Movie ID is required")
@@ -333,7 +352,7 @@ func PatchMovie(db *gorm.DB) http.HandlerFunc {
 			return
 		}
 		delete(patchData, "actors")
-		tx_err := db.Transaction(func(tx *gorm.DB) error {
+		txErr := db.Transaction(func(tx *gorm.DB) error {
 			for _, actor := range actors {
 				actorMap, ok := actor.(map[string]interface{})
 				if !ok {
@@ -341,14 +360,14 @@ func PatchMovie(db *gorm.DB) http.HandlerFunc {
 				}
 				if err := tx.Model(&models.Actor{}).Where("id=?", actorMap["id"]).Updates(actorMap).Error; err != nil {
 					log.Error("Error updating actor:", err.Error())
-					file_logger.Println("Error updating actor:", err.Error())
+					fileLogger.Println("Error updating actor:", err.Error())
 					return err
 				}
 				query := "SELECT COUNT(*) FROM actor_movies WHERE actor_id = ? AND movie_id = ?"
 				var count int64
 				if err := tx.Raw(query, actorMap["id"], movieID).Row().Scan(&count); err != nil {
 					log.Error("Error counting actor-movie relationship:", err.Error())
-					file_logger.Println("Error counting actor-movie relationship:", err.Error())
+					fileLogger.Println("Error counting actor-movie relationship:", err.Error())
 					return err
 				}
 
@@ -356,19 +375,19 @@ func PatchMovie(db *gorm.DB) http.HandlerFunc {
 					query := "INSERT INTO actor_movies (actor_id, movie_id) VALUES (?, ?)"
 					if err := tx.Exec(query, actorMap["id"], movieID).Error; err != nil {
 						log.Error("Error inserting actor-movie relationship:", err.Error())
-						file_logger.Println("Error inserting actor-movie relationship:", err.Error())
+						fileLogger.Println("Error inserting actor-movie relationship:", err.Error())
 						return err
 					}
 				}
 			}
 			if err := tx.Session(&gorm.Session{FullSaveAssociations: true}).Model(&models.Movie{}).Where("id = ?", movieID).Updates(patchData).Error; err != nil {
 				log.Error("Error updating actor:", err.Error())
-				file_logger.Println("Error updating actor:", err.Error())
+				fileLogger.Println("Error updating actor:", err.Error())
 				return err
 			}
 			return nil
 		})
-		if tx_err != nil {
+		if txErr != nil {
 			return
 		}
 		resErr := json.NewEncoder(w).Encode(map[string]interface{}{
@@ -376,7 +395,7 @@ func PatchMovie(db *gorm.DB) http.HandlerFunc {
 		})
 		if resErr != nil {
 			log.Error("Error encoding JSON:", resErr.Error())
-			file_logger.Println("Error encoding JSON:", resErr.Error())
+			fileLogger.Println("Error encoding JSON:", resErr.Error())
 			common.ErrorResponse(w, http.StatusInternalServerError, "Internal Server Error")
 		}
 	}
