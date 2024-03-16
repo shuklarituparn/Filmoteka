@@ -8,3 +8,17 @@ lint:
 	@./bin/golangci-lint run
 	@echo "=== Linter Completed ==="
 
+air:
+	@echo "=== Running AIR ==="
+	@./bin/air
+	@echo "=== AUR Completed ==="
+
+compose:
+	@echo "=== Starting Server ==="
+	@docker compose -f docker-compose.yml up --build
+	@echo "=== Development Server Stopped ==="
+
+insert:
+	@echo "=== Inserting Dummy Data ==="
+	@bash ./scripts/insert_data.sh
+	@echo "=== Dummy Data Inserted ==="
