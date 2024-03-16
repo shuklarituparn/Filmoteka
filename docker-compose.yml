@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+  prometheus:
+    build: ./internal/prometheus
+    ports:
+      - "9090:9090"
+  app:
+    container_name: filmotek
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: filmotek
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./init/db_data.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+  pgadmin-compose:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: rtprnshukla@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: IAmRituparnshukla123
+    ports:
+      - "16543:5000"
+    depends_on:
+      - postgres
+volumes:
+  db_data:

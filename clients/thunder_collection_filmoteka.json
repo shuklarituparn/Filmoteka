@@ -1,0 +1,411 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "filmoteka",
+  "dateExported": "2024-03-15T13:14:07.032Z",
+  "version": "1.1",
+  "folders": [
+    {
+      "_id": "a1e949b1-da5f-48b8-a203-65b5454c1f63",
+      "name": "movies",
+      "containerId": "",
+      "created": "2024-03-15T12:36:07.603Z",
+      "sortNum": 10000
+    },
+    {
+      "_id": "d97b77e0-04a1-48ef-829a-86b2d3689d6b",
+      "name": "actors",
+      "containerId": "",
+      "created": "2024-03-15T12:36:12.841Z",
+      "sortNum": 20000
+    },
+    {
+      "_id": "83f34fe3-b306-4acb-90a5-fa8e0e73b6ce",
+      "name": "users",
+      "containerId": "",
+      "created": "2024-03-15T12:36:22.191Z",
+      "sortNum": 30000
+    }
+  ],
+  "requests": [
+    {
+      "_id": "89de1e55-cfd4-447e-9108-6700ed963f2f",
+      "colId": "1bdbe9f3-7c5a-494d-85fd-3ecdd15c86c6",
+      "containerId": "a1e949b1-da5f-48b8-a203-65b5454c1f63",
+      "name": "Create  A Movie",
+      "url": "http://localhost:8080/api/v1/movies/create",
+      "method": "POST",
+      "sortNum": 20000,
+      "created": "2024-03-15T12:36:31.173Z",
+      "modified": "2024-03-15T13:13:35.196Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n \"title\": \"New Movie\",\n \"release_year\": 2000,\n \"genre\": \"Drama\",\n \"description\":\"Description Movie\",\n \"rating\": 8.9\n}",
+        "form": []
+      },
+      "reqType": "post",
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{ВАШ ТОКЕН}}"
+      },
+      "tests": []
+    },
+    {
+      "_id": "91a61fb7-a8d7-404b-886b-cf88daa6fc14",
+      "colId": "1bdbe9f3-7c5a-494d-85fd-3ecdd15c86c6",
+      "containerId": "a1e949b1-da5f-48b8-a203-65b5454c1f63",
+      "name": "Update a Movie",
+      "url": "http://localhost:8080/api/v1/movies/update",
+      "method": "PUT",
+      "sortNum": 30000,
+      "created": "2024-03-15T12:36:42.001Z",
+      "modified": "2024-03-15T13:10:09.459Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n \"id\": 8,\n \"title\": \"Fight Club\",\n \"release_year\": 1999,\n \"genre\": \"Drama\",\n \"description\":\"An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.\",\n \"rating\": 8.9,\n \"actors\": [{\"id\": 8}]\n}",
+        "form": []
+      },
+      "reqType": "put",
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{ВАШ ТОКЕН}}"
+      },
+      "tests": []
+    },
+    {
+      "_id": "391869aa-3218-496c-9612-8878c8a53fed",
+      "colId": "1bdbe9f3-7c5a-494d-85fd-3ecdd15c86c6",
+      "containerId": "a1e949b1-da5f-48b8-a203-65b5454c1f63",
+      "name": "Delete a Movie",
+      "url": "http://localhost:8080/api/v1/movies/delete?id=1",
+      "method": "DELETE",
+      "sortNum": 40000,
+      "created": "2024-03-15T12:36:48.312Z",
+      "modified": "2024-03-15T13:03:04.034Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "id",
+          "value": "1",
+          "isPath": false
+        }
+      ],
+      "reqType": "del",
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{ВАШ ТОКЕН}}"
+      },
+      "tests": []
+    },
+    {
+      "_id": "1a8d7037-0ac9-4980-80d3-622e2b7edc3d",
+      "colId": "1bdbe9f3-7c5a-494d-85fd-3ecdd15c86c6",
+      "containerId": "a1e949b1-da5f-48b8-a203-65b5454c1f63",
+      "name": "Read a Movie",
+      "url": "http://localhost:8080/api/v1/movies/get?id=2",
+      "method": "GET",
+      "sortNum": 50000,
+      "created": "2024-03-15T12:36:58.092Z",
+      "modified": "2024-03-15T13:02:49.773Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "id",
+          "value": "2",
+          "isPath": false
+        }
+      ],
+      "reqType": "get",
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{ВАШ ТОКЕН}}"
+      },
+      "tests": []
+    },
+    {
+      "_id": "6ff978a3-b96d-4e35-ba09-1403ee3186ad",
+      "colId": "1bdbe9f3-7c5a-494d-85fd-3ecdd15c86c6",
+      "containerId": "a1e949b1-da5f-48b8-a203-65b5454c1f63",
+      "name": "Read All Movies",
+      "url": "http://localhost:8080/api/v1/movies/all?page_size=5&page=1&sort_by=title&sort_order=ASC",
+      "method": "GET",
+      "sortNum": 60000,
+      "created": "2024-03-15T12:37:06.125Z",
+      "modified": "2024-03-15T13:00:39.240Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "page_size",
+          "value": "5",
+          "isPath": false
+        },
+        {
+          "name": "page",
+          "value": "1",
+          "isPath": false
+        },
+        {
+          "name": "sort_by",
+          "value": "title",
+          "isPath": false
+        },
+        {
+          "name": "sort_order",
+          "value": "ASC",
+          "isPath": false
+        }
+      ],
+      "reqType": "get",
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{ВАШ ТОКЕН}}"
+      },
+      "tests": []
+    },
+    {
+      "_id": "18876ff6-cef3-4ac7-863b-d5b6cc10e680",
+      "colId": "1bdbe9f3-7c5a-494d-85fd-3ecdd15c86c6",
+      "containerId": "d97b77e0-04a1-48ef-829a-86b2d3689d6b",
+      "name": "Create A Actor",
+      "url": "http://localhost:8080/api/v1/actors/create",
+      "method": "POST",
+      "sortNum": 70000,
+      "created": "2024-03-15T12:37:15.522Z",
+      "modified": "2024-03-15T12:47:00.230Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"first_name\": \"New Actor\",\n  \"last_name\": \"Surname\",\n  \"gender\": \"male\",\n  \"birth_date\": \"1969-03-11\"\n}",
+        "form": []
+      },
+      "reqType": "post",
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{ВАШ ТОКЕН}}"
+      },
+      "tests": []
+    },
+    {
+      "_id": "8a1e42c0-2d01-4712-82c6-48782e0dde8d",
+      "colId": "1bdbe9f3-7c5a-494d-85fd-3ecdd15c86c6",
+      "containerId": "d97b77e0-04a1-48ef-829a-86b2d3689d6b",
+      "name": "Update a Actor",
+      "url": "http://localhost:8080/api/v1/actors/update",
+      "method": "PUT",
+      "sortNum": 80000,
+      "created": "2024-03-15T12:37:22.410Z",
+      "modified": "2024-03-15T12:48:21.021Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"id\": 12,\n  \"first_name\": \"New Actor\",\n  \"last_name\": \"Surname\",\n  \"gender\": \"male\",\n  \"birth_date\": \"1969-03-11\",\n  \"movies\": [{\"id\":1}]\n}",
+        "form": []
+      },
+      "reqType": "put",
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{ВАШ ТОКЕН}}"
+      },
+      "tests": []
+    },
+    {
+      "_id": "aed3e9d0-cb5d-4158-bb39-fb15e84b38b2",
+      "colId": "1bdbe9f3-7c5a-494d-85fd-3ecdd15c86c6",
+      "containerId": "d97b77e0-04a1-48ef-829a-86b2d3689d6b",
+      "name": "Delete a Actor",
+      "url": "http://localhost:8080/api/v1/actors/delete?id=1",
+      "method": "DELETE",
+      "sortNum": 90000,
+      "created": "2024-03-15T12:37:31.491Z",
+      "modified": "2024-03-15T12:49:00.217Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "id",
+          "value": "1",
+          "isPath": false
+        }
+      ],
+      "reqType": "patch",
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{ВАШ ТОКЕН}}"
+      },
+      "tests": []
+    },
+    {
+      "_id": "fe4a3e1f-a106-4e00-8e14-837179286e1b",
+      "colId": "1bdbe9f3-7c5a-494d-85fd-3ecdd15c86c6",
+      "containerId": "d97b77e0-04a1-48ef-829a-86b2d3689d6b",
+      "name": "Read a Actor",
+      "url": "http://localhost:8080/api/v1/actors/get?id=8",
+      "method": "GET",
+      "sortNum": 100000,
+      "created": "2024-03-15T12:37:42.450Z",
+      "modified": "2024-03-15T13:07:31.177Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "id",
+          "value": "8",
+          "isPath": false
+        }
+      ],
+      "reqType": "get",
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{ВАШ ТОКЕН}}"
+      },
+      "tests": []
+    },
+    {
+      "_id": "e63593ac-3ab8-4251-9274-f4087c4e76de",
+      "colId": "1bdbe9f3-7c5a-494d-85fd-3ecdd15c86c6",
+      "containerId": "d97b77e0-04a1-48ef-829a-86b2d3689d6b",
+      "name": "Read all Actors",
+      "url": "http://localhost:8080/api/v1/actors/all?page_size=12&page=1&sort_by=first_name&sort_order=ASC",
+      "method": "GET",
+      "sortNum": 110000,
+      "created": "2024-03-15T12:37:53.490Z",
+      "modified": "2024-03-15T13:01:08.028Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "page_size",
+          "value": "12",
+          "isPath": false
+        },
+        {
+          "name": "page",
+          "value": "1",
+          "isPath": false
+        },
+        {
+          "name": "sort_by",
+          "value": "first_name",
+          "isPath": false
+        },
+        {
+          "name": "sort_order",
+          "value": "ASC",
+          "isPath": false
+        }
+      ],
+      "reqType": "get",
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{ВАШ ТОКЕН}}"
+      },
+      "tests": []
+    },
+    {
+      "_id": "ea35e938-d301-4239-8774-7558c03dd4a2",
+      "colId": "1bdbe9f3-7c5a-494d-85fd-3ecdd15c86c6",
+      "containerId": "83f34fe3-b306-4acb-90a5-fa8e0e73b6ce",
+      "name": "Login User",
+      "url": "http://localhost:8080/api/v1/users/login",
+      "method": "POST",
+      "sortNum": 120000,
+      "created": "2024-03-15T12:37:59.637Z",
+      "modified": "2024-03-15T12:39:54.701Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"admin@example.com\",\n  \"password\": \"adminpassword\"\n}",
+        "form": []
+      },
+      "reqType": "get",
+      "tests": []
+    },
+    {
+      "_id": "2e645578-3b1d-4dd6-bc36-24ad31cb8a9e",
+      "colId": "1bdbe9f3-7c5a-494d-85fd-3ecdd15c86c6",
+      "containerId": "83f34fe3-b306-4acb-90a5-fa8e0e73b6ce",
+      "name": "Register User",
+      "url": "http://localhost:8080/api/v1/users/register",
+      "method": "POST",
+      "sortNum": 130000,
+      "created": "2024-03-15T12:38:05.343Z",
+      "modified": "2024-03-15T12:43:07.402Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"email\": \"user12@example.com\",\n  \"password\": \"userpassword\"\n}",
+        "form": []
+      },
+      "reqType": "get",
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{ВАШ ТОКЕН}}"
+      },
+      "tests": []
+    },
+    {
+      "_id": "0a8db230-db78-4aee-a1db-6b9bc3e9c50a",
+      "colId": "1bdbe9f3-7c5a-494d-85fd-3ecdd15c86c6",
+      "containerId": "a1e949b1-da5f-48b8-a203-65b5454c1f63",
+      "name": "Patch Movie",
+      "url": "http://localhost:8080/api/v1/movies/patch?id=8",
+      "method": "PATCH",
+      "sortNum": 150000,
+      "created": "2024-03-15T12:44:01.039Z",
+      "modified": "2024-03-15T13:12:30.996Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "id",
+          "value": "8",
+          "isPath": false
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n \"description\":\"An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.\",\n \"rating\": 9.0,\n \"actors\": [{\"id\": 5}]\n}",
+        "form": []
+      },
+      "reqType": "patch",
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{ВАШ ТОКЕН}}"
+      },
+      "tests": []
+    },
+    {
+      "_id": "15500e2c-dc0a-4cfa-b003-3af33ec0591e",
+      "colId": "1bdbe9f3-7c5a-494d-85fd-3ecdd15c86c6",
+      "containerId": "d97b77e0-04a1-48ef-829a-86b2d3689d6b",
+      "name": "Patch Actor",
+      "url": "http://localhost:8080/api/v1/actors/patch?id=12",
+      "method": "PATCH",
+      "sortNum": 160000,
+      "created": "2024-03-15T12:57:01.690Z",
+      "modified": "2024-03-15T12:58:07.595Z",
+      "headers": [],
+      "params": [
+        {
+          "name": "id",
+          "value": "12",
+          "isPath": false
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"first_name\": \"New Actor Rename\",\n  \"movies\": [{\"id\":10}]\n}",
+        "form": []
+      },
+      "reqType": "patch",
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{ВАШ ТОКЕН}}"
+      },
+      "tests": []
+    }
+  ]
+}
