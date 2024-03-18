@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/shuklarituparn/Filmoteka/pkg/common"
 	"io"
 	"net/http"
 	"os"
@@ -30,7 +31,7 @@ func swaggerHandler(w http.ResponseWriter, r *http.Request) {
 	defer func(file *os.File) {
 		err := file.Close()
 		if err != nil {
-
+			common.ErrorResponse(w, http.StatusInternalServerError, "internal server error")
 		}
 	}(file)
 

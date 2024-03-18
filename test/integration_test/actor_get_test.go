@@ -53,7 +53,7 @@ func (s *GettingActorsSuite) TestTokenGen(t provider.T) {
 		defer func(Body io.ReadCloser) {
 			err := Body.Close()
 			if err != nil {
-
+				t.Error("the response body could not be closed")
 			}
 		}(resp.Body)
 
@@ -76,6 +76,7 @@ func (s *GettingActorsSuite) TestTokenGen(t provider.T) {
 			defer func(Body io.ReadCloser) {
 				err := Body.Close()
 				if err != nil {
+					t.Error("the response body could not be closed")
 
 				}
 			}(resp.Body)

@@ -5,50 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5edd656b-6484-482d-9020-152ca48591b7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api/controllers/actor_controller_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/controllers/health_controller_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/controllers/logs/app.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/controllers/movie_controller_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/controllers/search_controller_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/controllers/user_controller_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/models/actor_model_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/models/movie_model_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/models/user_model_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/routes/actor_routes_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/routes/movie_routes_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/routes/search_routes_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/routes/user_routes_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/coverage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/prometheus/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/integration_test/actor_controller_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/integration_test/actor_get_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/integration_test/allure-results/467579a5-e470-11ee-af45-e4a8dfe3d43b-result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/integration_test/allure-results/5fa81bf2-e470-11ee-a7c1-e4a8dfe3d43b-result.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/integration_test/allure-results/7a8cad7a-e4a5-11ee-a621-e4a8dfe3d43b-result.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/prod.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/controllers/actor_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/actor_controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/controllers/health_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/health_controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/controllers/movie_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/movie_controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/controllers/response_types.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/response_types.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/controllers/search_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/search_controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/controllers/user_controller.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/user_controller.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/routes/actor_routes.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/routes/actor_routes.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/routes/movie_routes.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/routes/movie_routes.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/routes/search_routes.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/routes/search_routes.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/routes/user_routes.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/routes/user_routes.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/main/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/main/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs.go" beforeDir="false" afterPath="$PROJECT_DIR$/docs/docs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/swagger.json" beforeDir="false" afterPath="$PROJECT_DIR$/docs/swagger.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/swagger.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/swagger.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/app.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/common/utils.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/common/utils.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/integration_test/actor_get_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/integration_test/actor_get_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
