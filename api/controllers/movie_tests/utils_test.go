@@ -73,11 +73,11 @@ func LoginAndGetAccessToken(t *testing.T, db *gorm.DB) string {
 	}
 	userJSON, err := json.Marshal(user)
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	loginReq, err := http.NewRequest("POST", "/api/v1/users/login", bytes.NewBuffer(userJSON))
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	loginRecorder := httptest.NewRecorder()
 	controllers.LoginUser(db)(loginRecorder, loginReq)
@@ -86,7 +86,7 @@ func LoginAndGetAccessToken(t *testing.T, db *gorm.DB) string {
 	}
 	var loginResponse controllers.LoginResponse
 	if err := json.NewDecoder(loginRecorder.Body).Decode(&loginResponse); err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	accessToken := loginResponse.AccessToken
 	if accessToken == "" {

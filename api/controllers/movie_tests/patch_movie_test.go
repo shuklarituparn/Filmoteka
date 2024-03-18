@@ -24,11 +24,11 @@ func TestPatchMovie(t *testing.T) {
 	}
 	movieJSON, err := json.Marshal(movie)
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	createMovie, err := http.NewRequest("POST", "/api/v1/movies/create", bytes.NewBuffer(movieJSON))
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	createMovie.Header.Set("Authorization", "Bearer "+accessToken)
 	createRecorder := httptest.NewRecorder()
@@ -44,11 +44,11 @@ func TestPatchMovie(t *testing.T) {
 	}
 	patchMovieJSON, err := json.Marshal(patchData)
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	patchMovieReq, err := http.NewRequest("PATCH", "/api/v1/movies/patch?id="+strconv.Itoa(int(movieResponse.Data.ID)), bytes.NewBuffer(patchMovieJSON))
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	patchMovieReq.Header.Set("Authorization", "Bearer "+accessToken)
 	patchActorRecorder := httptest.NewRecorder()

@@ -23,11 +23,11 @@ func TestReadAActor(t *testing.T) {
 	}
 	actorJSON, err := json.Marshal(actor)
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	createActor, err := http.NewRequest("POST", "/api/v1/actors/create", bytes.NewBuffer(actorJSON))
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	createActor.Header.Set("Authorization", "Bearer "+accessToken)
 	createRecorder := httptest.NewRecorder()
@@ -39,7 +39,7 @@ func TestReadAActor(t *testing.T) {
 	}
 	getReq, err := http.NewRequest("GET", "/api/v1/actors/get?id="+strconv.Itoa(actorResponse.ID), bytes.NewReader([]byte{}))
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	getReq.Header.Set("Authorization", "Bearer "+accessToken)
 	getRecorder := httptest.NewRecorder()

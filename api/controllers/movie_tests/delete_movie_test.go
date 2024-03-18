@@ -24,11 +24,11 @@ func TestDeleteMovie(t *testing.T) {
 	}
 	movieJSON, err := json.Marshal(movie)
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	createMovie, err := http.NewRequest("POST", "/api/v1/movies/create", bytes.NewBuffer(movieJSON))
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	createMovie.Header.Set("Authorization", "Bearer "+accessToken)
 	createRecorder := httptest.NewRecorder()
@@ -40,7 +40,7 @@ func TestDeleteMovie(t *testing.T) {
 	}
 	deleteReq, err := http.NewRequest("DELETE", "/api/v1/movies/delete?id="+strconv.Itoa(int(movieResponse.Data.ID)), bytes.NewReader([]byte{}))
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	deleteReq.Header.Set("Authorization", "Bearer "+accessToken)
 	deleteRecorder := httptest.NewRecorder()

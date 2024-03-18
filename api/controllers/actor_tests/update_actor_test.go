@@ -22,11 +22,11 @@ func TestUpdateActor(t *testing.T) {
 	}
 	actorJSON, err := json.Marshal(actor)
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	createActorReq, err := http.NewRequest("POST", "/api/v1/actors/create", bytes.NewBuffer(actorJSON))
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	createActorReq.Header.Set("Authorization", "Bearer "+accessToken)
 	createActorRecorder := httptest.NewRecorder()
@@ -36,7 +36,7 @@ func TestUpdateActor(t *testing.T) {
 	}
 	var createActorResponse controllers.CreateActorResponse
 	if err := json.NewDecoder(createActorRecorder.Body).Decode(&createActorResponse); err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	updateData := models.Actor{
 		ID:        uint(createActorResponse.ID),
@@ -47,11 +47,11 @@ func TestUpdateActor(t *testing.T) {
 	}
 	updateActorJSON, err := json.Marshal(updateData)
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	updateActorReq, err := http.NewRequest("PUT", "/api/v1/actors/update", bytes.NewBuffer(updateActorJSON))
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	updateActorReq.Header.Set("Authorization", "Bearer "+accessToken)
 	updateActorRecorder := httptest.NewRecorder()

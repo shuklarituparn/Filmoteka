@@ -25,11 +25,11 @@ func TestPatchActor(t *testing.T) {
 	}
 	actorJSON, err := json.Marshal(actor)
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	createActorReq, err := http.NewRequest("POST", "/api/v1/actors/create", bytes.NewBuffer(actorJSON))
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	createActorReq.Header.Set("Authorization", "Bearer "+accessToken)
 	createActorRecorder := httptest.NewRecorder()
@@ -39,7 +39,7 @@ func TestPatchActor(t *testing.T) {
 	}
 	var createActorResponse controllers.CreateActorResponse
 	if err := json.NewDecoder(createActorRecorder.Body).Decode(&createActorResponse); err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	patchData := models.Actor{
 		LastName:  "PatchedLastName",
@@ -47,11 +47,11 @@ func TestPatchActor(t *testing.T) {
 	}
 	patchActorJSON, err := json.Marshal(patchData)
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	patchActorReq, err := http.NewRequest("PATCH", "/api/v1/actors/patch?id="+strconv.Itoa(createActorResponse.ID), bytes.NewBuffer(patchActorJSON))
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	patchActorReq.Header.Set("Authorization", "Bearer "+accessToken)
 	patchActorRecorder := httptest.NewRecorder()

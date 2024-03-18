@@ -14,7 +14,7 @@ func TestReadAllActors(t *testing.T) {
 	accessToken := LoginAndGetAccessToken(t, db)
 	getReq, err := http.NewRequest("GET", "/api/v1/actors/all?page_size=3&page=1", bytes.NewReader([]byte{}))
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	getReq.Header.Set("Authorization", "Bearer "+accessToken)
 	getRecorder := httptest.NewRecorder()

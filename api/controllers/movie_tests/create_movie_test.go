@@ -23,11 +23,11 @@ func TestCreateMovie(t *testing.T) {
 	}
 	movieJSON, err := json.Marshal(movie)
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	createReq, err := http.NewRequest("POST", "/api/v1/movies/create", bytes.NewBuffer(movieJSON))
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	createReq.Header.Set("Authorization", "Bearer "+accessToken)
 	createRecorder := httptest.NewRecorder()

@@ -23,11 +23,11 @@ func TestUpdateMovie(t *testing.T) {
 	}
 	movieJSON, err := json.Marshal(movie)
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	createMovie, err := http.NewRequest("POST", "/api/v1/movies/create", bytes.NewBuffer(movieJSON))
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	createMovie.Header.Set("Authorization", "Bearer "+accessToken)
 	createRecorder := httptest.NewRecorder()
@@ -35,7 +35,7 @@ func TestUpdateMovie(t *testing.T) {
 	var movieResponse controllers.CreateMovieResponse
 	err = json.NewDecoder(createRecorder.Body).Decode(&movieResponse)
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	updateData := models.Movie{
 		ID:          movieResponse.Data.ID,
@@ -47,11 +47,11 @@ func TestUpdateMovie(t *testing.T) {
 	}
 	updateMovieJSON, err := json.Marshal(updateData)
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	updateMovieReq, err := http.NewRequest("PUT", "/api/v1/movies/update", bytes.NewBuffer(updateMovieJSON))
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	updateMovieReq.Header.Set("Authorization", "Bearer "+accessToken)
 	updateMovieRecorder := httptest.NewRecorder()

@@ -22,7 +22,7 @@ func TestRegister(t *testing.T) {
 	}
 	req, err := http.NewRequest("POST", "/api/v1/users/register", bytes.NewBuffer(userJSON))
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	rr := httptest.NewRecorder()
 	controllers.RegisterUser(db)(rr, req)

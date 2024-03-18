@@ -23,11 +23,11 @@ func TestLogin(t *testing.T) {
 	}
 	userJSON, err := json.Marshal(user)
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	req, err := http.NewRequest("POST", "/api/v1/users/login", bytes.NewBuffer(userJSON))
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	rr := httptest.NewRecorder()
 	controllers.LoginUser(db)(rr, req)

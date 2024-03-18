@@ -22,11 +22,11 @@ func TestCreateActor(t *testing.T) {
 	}
 	actorJSON, err := json.Marshal(actor)
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	createReq, err := http.NewRequest("POST", "/api/v1/actors/create", bytes.NewBuffer(actorJSON))
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 	createReq.Header.Set("Authorization", "Bearer "+accessToken)
 	createRecorder := httptest.NewRecorder()
