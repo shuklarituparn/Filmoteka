@@ -3,27 +3,26 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
-	"net/http"
-	"strings"
-
 	"github.com/charmbracelet/log"
 	"github.com/shuklarituparn/Filmoteka/api/models"
 	"github.com/shuklarituparn/Filmoteka/pkg/common"
 	"gorm.io/gorm"
+	"net/http"
+	"strings"
 )
 
-// SearchMovie searches for movies based on the provided query string.
-// @Summary Search for movies
+// SearchMovie выполняет поиск фильмов на основе предоставленной строки запроса.
+// @Summary Поиск фильмов
 // @ID search-movies
 // @Produce json
-// @Tags Search Movies
+// @Tags Поиск Фильмов
 // @Security BearerAuth
-// @Param q query string true "Search query"
-// @Param sort_by query string false "Field to sort by (default rating)"
-// @Param sort_order query string false "Sort order (ASC or DESC, default DESC)"
-// @Success 200 {object} SearchMovieResponse "List of matching movies"
-// @Failure 400 {string} string "Invalid search query"
-// @Failure 500 {string} string "Error encoding response"
+// @Param q query string true "Поисковый запрос"
+// @Param sort_by query string false "Поле для сортировки (по умолчанию рейтинг)"
+// @Param sort_order query string false "Порядок сортировки (ASC или DESC, по умолчанию DESC)"
+// @Success 200 {object} SearchMovieResponse "Список совпадающих фильмов"
+// @Failure 400 {string} string "Неверный поисковый запрос"
+// @Failure 500 {string} string "Ошибка при кодировании ответа"
 // @Router /api/v1/search [get]
 func SearchMovie(db *gorm.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {

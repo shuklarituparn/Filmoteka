@@ -1,9 +1,8 @@
-basePath: /
 definitions:
   controllers.CreateActorResponse:
     properties:
       id:
-        type: string
+        type: integer
       message:
         type: string
     type: object
@@ -306,13 +305,12 @@ definitions:
     - rating
     - title
     type: object
-host: localhost:8080
 info:
   contact:
     email: rtprnshukla@gmail.com
-    name: API Support
+    name: Поддержка API
     url: https://github.com/shuklarituparn
-  description: Fimotek Api Docs
+  description: Документация API Filmotek
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
@@ -323,21 +321,21 @@ paths:
     get:
       operationId: read-all-actors
       parameters:
-      - description: Page number
+      - description: Номер страницы
         in: query
         name: page
         required: true
         type: integer
-      - description: Number of items per page
+      - description: Количество элементов на странице
         in: query
         name: page_size
         required: true
         type: integer
-      - description: Field to sort by (default birth_date)
+      - description: Поле для сортировки (по умолчанию birth_date)
         in: query
         name: sort_by
         type: string
-      - description: Sort order (ASC or DESC, default DESC)
+      - description: Порядок сортировки (ASC или DESC, по умолчанию DESC)
         in: query
         name: sort_order
         type: string
@@ -345,29 +343,29 @@ paths:
       - application/json
       responses:
         "200":
-          description: List of actors
+          description: Список актеров
           schema:
             $ref: '#/definitions/controllers.ReadAllActorResponse'
         "400":
-          description: Invalid page_size or page
+          description: Неверный размер страницы или номер страницы
           schema:
             type: string
         "500":
-          description: Internal Server Error
+          description: Внутренняя ошибка сервера
           schema:
             type: string
       security:
       - BearerAuth: []
-      summary: Get all actors with pagination
+      summary: Получить всех актеров с пагинацией
       tags:
-      - Actors
+      - Актеры
   /api/v1/actors/create:
     post:
       consumes:
       - application/json
       operationId: create-actor
       parameters:
-      - description: Actor object to be created
+      - description: Объект актера, который нужно создать
         in: body
         name: actor
         required: true
@@ -377,27 +375,27 @@ paths:
       - application/json
       responses:
         "201":
-          description: Actor Added
+          description: Актер добавлен
           schema:
             $ref: '#/definitions/controllers.CreateActorResponse'
         "400":
-          description: Invalid request payload
+          description: Неверный запрос
           schema:
             type: string
         "500":
-          description: Internal Server Error
+          description: Внутренняя ошибка сервера
           schema:
             type: string
       security:
       - BearerAuth: []
-      summary: Create a new actor
+      summary: Создать нового актера
       tags:
-      - Actors
+      - Актеры
   /api/v1/actors/delete:
     delete:
       operationId: delete-actor
       parameters:
-      - description: Actor ID
+      - description: Идентификатор актера
         in: query
         name: id
         required: true
@@ -406,27 +404,27 @@ paths:
       - application/json
       responses:
         "200":
-          description: Actor deleted successfully
+          description: Актер успешно удален
           schema:
             $ref: '#/definitions/controllers.DeleteActorResponse'
         "400":
-          description: Actor ID is required
+          description: Требуется идентификатор актера
           schema:
             type: string
         "500":
-          description: Failed to delete actor or its associations
+          description: Не удалось удалить актера или его связи
           schema:
             type: string
       security:
       - BearerAuth: []
-      summary: Delete an actor
+      summary: Удалить актера
       tags:
-      - Actors
+      - Актеры
   /api/v1/actors/get:
     get:
       operationId: read-actor-by-id
       parameters:
-      - description: Actor ID
+      - description: Идентификатор актера
         in: query
         name: id
         required: true
@@ -435,38 +433,38 @@ paths:
       - application/json
       responses:
         "200":
-          description: Actor details
+          description: Подробности актера
           schema:
             $ref: '#/definitions/controllers.ReadActorResponse'
         "400":
-          description: Actor ID is required
+          description: Необходим идентификатор актера
           schema:
             type: string
         "404":
-          description: Actor not found
+          description: Актер не найден
           schema:
             type: string
         "500":
-          description: Failed to fetch actor
+          description: Ошибка при получении актера
           schema:
             type: string
       security:
       - BearerAuth: []
-      summary: Get actor by ID
+      summary: Получить актера по идентификатору
       tags:
-      - Actors
+      - Актеры
   /api/v1/actors/patch:
     patch:
       consumes:
       - application/json
       operationId: patch-actor
       parameters:
-      - description: Actor ID
+      - description: Идентификатор актера
         in: query
         name: id
         required: true
         type: string
-      - description: Patch data for updating the actor
+      - description: Данные для частичного обновления актера
         in: body
         name: patchData
         required: true
@@ -476,29 +474,29 @@ paths:
       - application/json
       responses:
         "200":
-          description: Actor updated successfully
+          description: Актер успешно обновлен
           schema:
             $ref: '#/definitions/controllers.PatchActorResponse'
         "400":
-          description: Invalid request payload
+          description: Неверный запрос
           schema:
             type: string
         "500":
-          description: Failed to update actor or its associations
+          description: Не удалось обновить актера или его связи
           schema:
             type: string
       security:
       - BearerAuth: []
-      summary: Update an existing actor partially
+      summary: Частично обновить существующего актера
       tags:
-      - Actors
+      - Актеры
   /api/v1/actors/update:
     put:
       consumes:
       - application/json
       operationId: update-actor
       parameters:
-      - description: Actor object to be updated
+      - description: Объект актера для обновления
         in: body
         name: actor
         required: true
@@ -508,41 +506,41 @@ paths:
       - application/json
       responses:
         "200":
-          description: Actor Updated successfully
+          description: Актер успешно обновлен
           schema:
             $ref: '#/definitions/controllers.UpdateActorResponse'
         "400":
-          description: Invalid request payload
+          description: Неверный запрос
           schema:
             type: string
         "500":
-          description: Failed to update actor
+          description: Не удалось обновить актера
           schema:
             type: string
       security:
       - BearerAuth: []
-      summary: Update an existing actor
+      summary: Обновить существующего актера
       tags:
-      - Actors
+      - Актеры
   /api/v1/movies/all:
     get:
       operationId: read-all-movies
       parameters:
-      - description: Page number
+      - description: Номер страницы
         in: query
         name: page
         required: true
         type: integer
-      - description: Number of items per page
+      - description: Количество элементов на странице
         in: query
         name: page_size
         required: true
         type: integer
-      - description: Field to sort by (default rating)
+      - description: Поле для сортировки (по умолчанию рейтинг)
         in: query
         name: sort_by
         type: string
-      - description: Sort order (ASC or DESC, default DESC)
+      - description: Порядок сортировки (ASC или DESC, по умолчанию DESC)
         in: query
         name: sort_order
         type: string
@@ -550,29 +548,29 @@ paths:
       - application/json
       responses:
         "200":
-          description: List of movies
+          description: Список фильмов
           schema:
             $ref: '#/definitions/controllers.ReadAllMoviesResponse'
         "400":
-          description: Invalid page_size or page
+          description: Неверный размер страницы или номер страницы
           schema:
             type: string
         "500":
-          description: Internal Server Error
+          description: Внутренняя ошибка сервера
           schema:
             type: string
       security:
       - BearerAuth: []
-      summary: Get all movies with pagination
+      summary: Получить все фильмы с пагинацией
       tags:
-      - Movies
+      - Фильмы
   /api/v1/movies/create:
     post:
       consumes:
       - application/json
       operationId: create-movie
       parameters:
-      - description: Movie object to be created
+      - description: Объект фильма для создания
         in: body
         name: movie
         required: true
@@ -582,27 +580,27 @@ paths:
       - application/json
       responses:
         "201":
-          description: Movie created successfully
+          description: Фильм успешно создан
           schema:
             $ref: '#/definitions/controllers.CreateMovieResponse'
         "400":
-          description: Invalid request payload
+          description: Неверный запрос
           schema:
             type: string
         "500":
-          description: Internal Server Error
+          description: Внутренняя ошибка сервера
           schema:
             type: string
       security:
       - BearerAuth: []
-      summary: Create a new movie
+      summary: Создать новый фильм
       tags:
-      - Movies
+      - Фильмы
   /api/v1/movies/delete:
     delete:
       operationId: delete-movie
       parameters:
-      - description: Movie ID
+      - description: Идентификатор фильма
         in: query
         name: id
         required: true
@@ -611,27 +609,27 @@ paths:
       - application/json
       responses:
         "200":
-          description: Movie deleted successfully
+          description: Фильм успешно удален
           schema:
             $ref: '#/definitions/controllers.DeleteMovieResponse'
         "400":
-          description: Movie ID is required
+          description: Требуется идентификатор фильма
           schema:
             type: string
         "500":
-          description: Failed to delete movie or its associations
+          description: Не удалось удалить фильм или его связи
           schema:
             type: string
       security:
       - BearerAuth: []
-      summary: Delete a movie
+      summary: Удалить фильм
       tags:
-      - Movies
+      - Фильмы
   /api/v1/movies/get:
     get:
       operationId: read-movie-by-id
       parameters:
-      - description: Movie ID
+      - description: Идентификатор фильма
         in: query
         name: id
         required: true
@@ -640,38 +638,38 @@ paths:
       - application/json
       responses:
         "200":
-          description: Movie details
+          description: Подробности фильма
           schema:
             $ref: '#/definitions/controllers.ReadMovieResponse'
         "400":
-          description: Movie ID is required
+          description: Требуется идентификатор фильма
           schema:
             type: string
         "404":
-          description: Movie not found
+          description: Фильм не найден
           schema:
             type: string
         "500":
-          description: Failed to fetch movie
+          description: Ошибка при получении фильма
           schema:
             type: string
       security:
       - BearerAuth: []
-      summary: Get movie by ID
+      summary: Получить фильм по идентификатору
       tags:
-      - Movies
+      - Фильмы
   /api/v1/movies/patch:
     patch:
       consumes:
       - application/json
       operationId: patch-movie
       parameters:
-      - description: Movie ID
+      - description: Идентификатор фильма
         in: query
         name: id
         required: true
         type: string
-      - description: Patch data for updating the movie
+      - description: Данные для частичного обновления фильма
         in: body
         name: patchData
         required: true
@@ -681,29 +679,29 @@ paths:
       - application/json
       responses:
         "200":
-          description: Movie updated successfully
+          description: Фильм успешно обновлен
           schema:
             $ref: '#/definitions/controllers.PatchMovieResponse'
         "400":
-          description: Invalid request payload
+          description: Неверный запрос
           schema:
             type: string
         "500":
-          description: Failed to update movie or its associations
+          description: Не удалось обновить фильм или его связи
           schema:
             type: string
       security:
       - BearerAuth: []
-      summary: Update an existing movie partially
+      summary: Частично обновить существующий фильм
       tags:
-      - Movies
+      - Фильмы
   /api/v1/movies/update:
     put:
       consumes:
       - application/json
       operationId: update-movie
       parameters:
-      - description: Movie object to be updated
+      - description: Объект фильма для обновления
         in: body
         name: movie
         required: true
@@ -713,36 +711,36 @@ paths:
       - application/json
       responses:
         "200":
-          description: Movie updated successfully
+          description: Фильм успешно обновлен
           schema:
             $ref: '#/definitions/controllers.UpdateMovieResponse'
         "400":
-          description: Invalid request payload
+          description: Неверный запрос
           schema:
             type: string
         "500":
-          description: Failed to update movie
+          description: Не удалось обновить фильм
           schema:
             type: string
       security:
       - BearerAuth: []
-      summary: Update an existing movie
+      summary: Обновить существующий фильм
       tags:
-      - Movies
+      - Фильмы
   /api/v1/search:
     get:
       operationId: search-movies
       parameters:
-      - description: Search query
+      - description: Поисковый запрос
         in: query
         name: q
         required: true
         type: string
-      - description: Field to sort by (default rating)
+      - description: Поле для сортировки (по умолчанию рейтинг)
         in: query
         name: sort_by
         type: string
-      - description: Sort order (ASC or DESC, default DESC)
+      - description: Порядок сортировки (ASC или DESC, по умолчанию DESC)
         in: query
         name: sort_order
         type: string
@@ -750,29 +748,29 @@ paths:
       - application/json
       responses:
         "200":
-          description: List of matching movies
+          description: Список совпадающих фильмов
           schema:
             $ref: '#/definitions/controllers.SearchMovieResponse'
         "400":
-          description: Invalid search query
+          description: Неверный поисковый запрос
           schema:
             type: string
         "500":
-          description: Error encoding response
+          description: Ошибка при кодировании ответа
           schema:
             type: string
       security:
       - BearerAuth: []
-      summary: Search for movies
+      summary: Поиск фильмов
       tags:
-      - Search Movies
+      - Поиск Фильмов
   /api/v1/users/login:
     post:
       consumes:
       - application/json
-      description: Log in a user with email and password
+      description: Вход пользователя с использованием электронной почты и пароля
       parameters:
-      - description: User credentials
+      - description: Учетные данные пользователя
         in: body
         name: request
         required: true
@@ -782,56 +780,57 @@ paths:
       - application/json
       responses:
         "200":
-          description: Logged In Successfully
+          description: Успешный вход в систему
           schema:
             $ref: '#/definitions/controllers.LoginResponse'
         "400":
-          description: Invalid request payload
+          description: Неверный запрос
           schema:
             $ref: '#/definitions/controllers.ErrorResponse'
         "401":
-          description: Invalid email or password
+          description: Неверная электронная почта или пароль
           schema:
             $ref: '#/definitions/controllers.ErrorResponse'
         "500":
-          description: Internal Server Error
+          description: Внутренняя ошибка сервера
           schema:
             $ref: '#/definitions/controllers.ErrorResponse'
-      summary: Log in a user
+      summary: Вход пользователя
       tags:
-      - Authentication
+      - Аутентификация
   /api/v1/users/refresh:
     get:
       consumes:
       - application/json
-      description: Refresh JWT access and refresh tokens
+      description: Обновление доступа и обновления токенов JWT
       produces:
       - application/json
       responses:
         "200":
-          description: New access and refresh tokens
+          description: Новые токены доступа и обновления
           schema:
             $ref: '#/definitions/controllers.RefreshTokenResponse'
         "400":
-          description: Invalid or expired token
+          description: Неверный или истекший токен
           schema:
             $ref: '#/definitions/controllers.ErrorResponse'
         "500":
-          description: Internal Server Error
+          description: Внутренняя ошибка сервера
           schema:
             $ref: '#/definitions/controllers.ErrorResponse'
       security:
       - BearerAuth: []
-      summary: Refresh JWT tokens
+      summary: Обновление токенов JWT
       tags:
-      - Authentication
+      - Аутентификация
   /api/v1/users/register:
     post:
       consumes:
       - application/json
-      description: Register a new user with email and password
+      description: Зарегистрировать нового пользователя с помощью электронной почты
+        и пароля
       parameters:
-      - description: User information
+      - description: Информация о пользователе
         in: body
         name: request
         required: true
@@ -841,20 +840,20 @@ paths:
       - application/json
       responses:
         "201":
-          description: User Created Successfully
+          description: Пользователь успешно создан
           schema:
             $ref: '#/definitions/controllers.CreateUserResponse'
         "400":
-          description: Invalid request payload
+          description: Неверный запрос
           schema:
             $ref: '#/definitions/controllers.ErrorResponse'
         "500":
-          description: Internal Server Error
+          description: Внутренняя ошибка сервера
           schema:
             $ref: '#/definitions/controllers.ErrorResponse'
-      summary: Register a new user
+      summary: Зарегистрировать нового пользователя
       tags:
-      - Authentication
+      - Аутентификация
   /healthcheck:
     get:
       operationId: health-check
@@ -862,10 +861,10 @@ paths:
       - application/json
       responses:
         "200":
-          description: Health check response
+          description: Ответ на проверку состояния
           schema:
             $ref: '#/definitions/controllers.HealthCheckResponse'
-      summary: Perform health check
+      summary: Выполнить проверку состояния
       tags:
       - Healthcheck
 securityDefinitions:

@@ -4,30 +4,29 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"io"
-	"math"
-	"net/http"
-	"strconv"
-	"strings"
-
 	"github.com/charmbracelet/log"
 	"github.com/shuklarituparn/Filmoteka/api/models"
 	"github.com/shuklarituparn/Filmoteka/internal/prometheus"
 	"github.com/shuklarituparn/Filmoteka/pkg/common"
 	"gorm.io/gorm"
+	"io"
+	"math"
+	"net/http"
+	"strconv"
+	"strings"
 )
 
-// CreateMovie creates a new movie.
-// @Summary Create a new movie
+// CreateMovie создает новый фильм.
+// @Summary Создать новый фильм
 // @ID create-movie
 // @Security BearerAuth
 // @Accept json
 // @Produce json
-// @Tags Movies
-// @Param movie body models.CreateMovieModel true "Movie object to be created"
-// @Success 201 {object} CreateMovieResponse "Movie created successfully"
-// @Failure 400 {string} string "Invalid request payload"
-// @Failure 500 {string} string "Internal Server Error"
+// @Tags Фильмы
+// @Param movie body models.CreateMovieModel true "Объект фильма для создания"
+// @Success 201 {object} CreateMovieResponse "Фильм успешно создан"
+// @Failure 400 {string} string "Неверный запрос"
+// @Failure 500 {string} string "Внутренняя ошибка сервера"
 // @Router /api/v1/movies/create [post]
 func CreateMovie(db *gorm.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -44,7 +43,6 @@ func CreateMovie(db *gorm.DB) http.HandlerFunc {
 			err := Body.Close()
 			if err != nil {
 				common.ErrorResponse(w, http.StatusInternalServerError, "Internal Server Error")
-
 			}
 		}(r.Body)
 		if !common.ValidateAndRespond(w, movie) {
@@ -80,19 +78,19 @@ func CreateMovie(db *gorm.DB) http.HandlerFunc {
 	}
 }
 
-// ReadAllMovies returns a list of movies with pagination support.
-// @Summary Get all movies with pagination
+// ReadAllMovies возвращает список фильмов с поддержкой пагинации.
+// @Summary Получить все фильмы с пагинацией
 // @ID read-all-movies
 // @Produce json
 // @Security BearerAuth
-// @Tags Movies
-// @Param page query integer true "Page number"
-// @Param page_size query integer true "Number of items per page"
-// @Param sort_by query string false "Field to sort by (default rating)"
-// @Param sort_order query string false "Sort order (ASC or DESC, default DESC)"
-// @Success 200 {object} ReadAllMoviesResponse "List of movies"
-// @Failure 400 {string} string "Invalid page_size or page"
-// @Failure 500 {string} string "Internal Server Error"
+// @Tags Фильмы
+// @Param page query integer true "Номер страницы"
+// @Param page_size query integer true "Количество элементов на странице"
+// @Param sort_by query string false "Поле для сортировки (по умолчанию рейтинг)"
+// @Param sort_order query string false "Порядок сортировки (ASC или DESC, по умолчанию DESC)"
+// @Success 200 {object} ReadAllMoviesResponse "Список фильмов"
+// @Failure 400 {string} string "Неверный размер страницы или номер страницы"
+// @Failure 500 {string} string "Внутренняя ошибка сервера"
 // @Router /api/v1/movies/all [get]
 func ReadAllMovies(db *gorm.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -146,17 +144,17 @@ func ReadAllMovies(db *gorm.DB) http.HandlerFunc {
 	}
 }
 
-// ReadMovie returns details of a specific movie by ID.
-// @Summary Get movie by ID
+// ReadMovie возвращает подробности о конкретном фильме по его идентификатору.
+// @Summary Получить фильм по идентификатору
 // @ID read-movie-by-id
 // @Produce json
-// @Tags Movies
+// @Tags Фильмы
 // @Security BearerAuth
-// @Param id query string true "Movie ID"
-// @Success 200 {object} ReadMovieResponse "Movie details"
-// @Failure 400 {string} string "Movie ID is required"
-// @Failure 404 {string} string "Movie not found"
-// @Failure 500 {string} string "Failed to fetch movie"
+// @Param id query string true "Идентификатор фильма"
+// @Success 200 {object} ReadMovieResponse "Подробности фильма"
+// @Failure 400 {string} string "Требуется идентификатор фильма"
+// @Failure 404 {string} string "Фильм не найден"
+// @Failure 500 {string} string "Ошибка при получении фильма"
 // @Router /api/v1/movies/get [get]
 func ReadMovie(db *gorm.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -196,17 +194,17 @@ func ReadMovie(db *gorm.DB) http.HandlerFunc {
 	}
 }
 
-// UpdateMovie updates an existing movie.
-// @Summary Update an existing movie
+// UpdateMovie обновляет существующий фильм.
+// @Summary Обновить существующий фильм
 // @ID update-movie
 // @Accept json
-// @Tags Movies
+// @Tags Фильмы
 // @Produce json
 // @Security BearerAuth
-// @Param movie body models.UpdateMovieModel true "Movie object to be updated"
-// @Success 200 {object} UpdateMovieResponse "Movie updated successfully"
-// @Failure 400 {string} string "Invalid request payload"
-// @Failure 500 {string} string "Failed to update movie"
+// @Param movie body models.UpdateMovieModel true "Объект фильма для обновления"
+// @Success 200 {object} UpdateMovieResponse "Фильм успешно обновлен"
+// @Failure 400 {string} string "Неверный запрос"
+// @Failure 500 {string} string "Не удалось обновить фильм"
 // @Router /api/v1/movies/update [put]
 func UpdateMovie(db *gorm.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -222,7 +220,6 @@ func UpdateMovie(db *gorm.DB) http.HandlerFunc {
 			err := Body.Close()
 			if err != nil {
 				common.ErrorResponse(w, http.StatusInternalServerError, "Internal Server Error")
-
 			}
 		}(r.Body)
 		if !common.ValidateAndRespond(w, movie) {
@@ -262,16 +259,16 @@ func UpdateMovie(db *gorm.DB) http.HandlerFunc {
 	}
 }
 
-// DeleteMovie deletes a movie and its associations from the database.
-// @Summary Delete a movie
+// DeleteMovie удаляет фильм и его связи из базы данных.
+// @Summary Удалить фильм
 // @ID delete-movie
-// @Tags Movies
+// @Tags Фильмы
 // @Security BearerAuth
 // @Produce json
-// @Param id query string true "Movie ID"
-// @Success 200 {object} DeleteMovieResponse "Movie deleted successfully"
-// @Failure 400 {string} string "Movie ID is required"
-// @Failure 500 {string} string "Failed to delete movie or its associations"
+// @Param id query string true "Идентификатор фильма"
+// @Success 200 {object} DeleteMovieResponse "Фильм успешно удален"
+// @Failure 400 {string} string "Требуется идентификатор фильма"
+// @Failure 500 {string} string "Не удалось удалить фильм или его связи"
 // @Router /api/v1/movies/delete [delete]
 func DeleteMovie(db *gorm.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -310,18 +307,18 @@ func DeleteMovie(db *gorm.DB) http.HandlerFunc {
 	}
 }
 
-// PatchMovie updates an existing movie with the provided patch data.
-// @Summary Update an existing movie partially
+// PatchMovie обновляет существующий фильм предоставленными изменениями.
+// @Summary Частично обновить существующий фильм
 // @ID patch-movie
 // @Accept json
-// @Tags Movies
+// @Tags Фильмы
 // @Produce json
 // @Security BearerAuth
-// @Param id query string true "Movie ID"
-// @Param patchData body models.CreateMovieModel true "Patch data for updating the movie"
-// @Success 200 {object} PatchMovieResponse "Movie updated successfully"
-// @Failure 400 {string} string "Invalid request payload"
-// @Failure 500 {string} string "Failed to update movie or its associations"
+// @Param id query string true "Идентификатор фильма"
+// @Param patchData body models.CreateMovieModel true "Данные для частичного обновления фильма"
+// @Success 200 {object} PatchMovieResponse "Фильм успешно обновлен"
+// @Failure 400 {string} string "Неверный запрос"
+// @Failure 500 {string} string "Не удалось обновить фильм или его связи"
 // @Router /api/v1/movies/patch [patch]
 func PatchMovie(db *gorm.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -338,7 +335,6 @@ func PatchMovie(db *gorm.DB) http.HandlerFunc {
 			err := Body.Close()
 			if err != nil {
 				common.ErrorResponse(w, http.StatusInternalServerError, "Internal Server Error")
-
 			}
 		}(r.Body)
 		movieID := r.URL.Query().Get("id")
@@ -346,43 +342,45 @@ func PatchMovie(db *gorm.DB) http.HandlerFunc {
 			common.ErrorResponse(w, http.StatusBadRequest, "Movie ID is required")
 			return
 		}
-		actors, ok := patchData["actors"].([]interface{})
-		if !ok {
-			common.ErrorResponse(w, http.StatusBadRequest, "Actors data is missing or invalid")
-			return
-		}
-		delete(patchData, "actors")
 		txErr := db.Transaction(func(tx *gorm.DB) error {
-			for _, actor := range actors {
-				actorMap, ok := actor.(map[string]interface{})
+			if actorsData, ok := patchData["actors"]; ok {
+				actors, ok := actorsData.([]interface{})
 				if !ok {
-					return errors.ErrUnsupported
+					common.ErrorResponse(w, http.StatusBadRequest, "Movies data is invalid")
 				}
-				if err := tx.Model(&models.Actor{}).Where("id=?", actorMap["id"]).Updates(actorMap).Error; err != nil {
-					log.Error("Error updating actor:", err.Error())
-					fileLogger.Println("Error updating actor:", err.Error())
-					return err
-				}
-				query := "SELECT COUNT(*) FROM actor_movies WHERE actor_id = ? AND movie_id = ?"
-				var count int64
-				if err := tx.Raw(query, actorMap["id"], movieID).Row().Scan(&count); err != nil {
-					log.Error("Error counting actor-movie relationship:", err.Error())
-					fileLogger.Println("Error counting actor-movie relationship:", err.Error())
-					return err
-				}
-
-				if count == 0 {
-					query := "INSERT INTO actor_movies (actor_id, movie_id) VALUES (?, ?)"
-					if err := tx.Exec(query, actorMap["id"], movieID).Error; err != nil {
-						log.Error("Error inserting actor-movie relationship:", err.Error())
-						fileLogger.Println("Error inserting actor-movie relationship:", err.Error())
+				delete(patchData, "actors")
+				for _, actor := range actors {
+					actorMap, ok := actor.(map[string]interface{})
+					if !ok {
+						return errors.ErrUnsupported
+					}
+					if err := tx.Model(&models.Actor{}).Where("id=?", actorMap["id"]).Updates(actorMap).Error; err != nil {
+						log.Error("Error updating actor:", err.Error())
+						fileLogger.Println("Error updating actor:", err.Error())
 						return err
+					}
+					query := "SELECT COUNT(*) FROM actor_movies WHERE actor_id = ? AND movie_id = ?"
+					var count int64
+					if err := tx.Raw(query, actorMap["id"], movieID).Row().Scan(&count); err != nil {
+						log.Error("Error counting actor-movie relationship:", err.Error())
+						fileLogger.Println("Error counting actor-movie relationship:", err.Error())
+						return err
+					}
+
+					if count == 0 {
+						query := "INSERT INTO actor_movies (actor_id, movie_id) VALUES (?, ?)"
+						if err := tx.Exec(query, actorMap["id"], movieID).Error; err != nil {
+							log.Error("Error inserting actor-movie relationship:", err.Error())
+							fileLogger.Println("Error inserting actor-movie relationship:", err.Error())
+							return err
+						}
 					}
 				}
 			}
 			if err := tx.Session(&gorm.Session{FullSaveAssociations: true}).Model(&models.Movie{}).Where("id = ?", movieID).Updates(patchData).Error; err != nil {
-				log.Error("Error updating actor:", err.Error())
-				fileLogger.Println("Error updating actor:", err.Error())
+				log.Error("Error updating movie:", err.Error())
+				fileLogger.Println("Error updating movie:", err.Error())
+				common.ErrorResponse(w, http.StatusBadRequest, "Error updating movie")
 				return err
 			}
 			return nil

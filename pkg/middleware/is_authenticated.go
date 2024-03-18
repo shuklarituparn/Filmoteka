@@ -12,7 +12,7 @@ import (
 func IsAuthenticated(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		log.Info("Request received:", r.Method, r.URL.Path)
-		file_logger.Println("Request received:", r.Method, r.URL.Path)
+		fileLogger.Println("Request received:", r.Method, r.URL.Path)
 		authHeader := r.Header.Get("Authorization")
 		if authHeader == "" {
 			common.ErrorResponse(w, http.StatusUnauthorized, "Authorization header missing")

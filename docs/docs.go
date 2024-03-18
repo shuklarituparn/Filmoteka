@@ -11,7 +11,7 @@ const docTemplate = `{
         "description": "{{escape .Description}}",
         "title": "{{.Title}}",
         "contact": {
-            "name": "API Support",
+            "name": "Поддержка API",
             "url": "https://github.com/shuklarituparn",
             "email": "rtprnshukla@gmail.com"
         },
@@ -35,53 +35,53 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Actors"
+                    "Актеры"
                 ],
-                "summary": "Get all actors with pagination",
+                "summary": "Получить всех актеров с пагинацией",
                 "operationId": "read-all-actors",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "Page number",
+                        "description": "Номер страницы",
                         "name": "page",
                         "in": "query",
                         "required": true
                     },
                     {
                         "type": "integer",
-                        "description": "Number of items per page",
+                        "description": "Количество элементов на странице",
                         "name": "page_size",
                         "in": "query",
                         "required": true
                     },
                     {
                         "type": "string",
-                        "description": "Field to sort by (default birth_date)",
+                        "description": "Поле для сортировки (по умолчанию birth_date)",
                         "name": "sort_by",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "Sort order (ASC or DESC, default DESC)",
+                        "description": "Порядок сортировки (ASC или DESC, по умолчанию DESC)",
                         "name": "sort_order",
                         "in": "query"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "List of actors",
+                        "description": "Список актеров",
                         "schema": {
                             "$ref": "#/definitions/controllers.ReadAllActorResponse"
                         }
                     },
                     "400": {
-                        "description": "Invalid page_size or page",
+                        "description": "Неверный размер страницы или номер страницы",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Internal Server Error",
+                        "description": "Внутренняя ошибка сервера",
                         "schema": {
                             "type": "string"
                         }
@@ -103,13 +103,13 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Actors"
+                    "Актеры"
                 ],
-                "summary": "Create a new actor",
+                "summary": "Создать нового актера",
                 "operationId": "create-actor",
                 "parameters": [
                     {
-                        "description": "Actor object to be created",
+                        "description": "Объект актера, который нужно создать",
                         "name": "actor",
                         "in": "body",
                         "required": true,
@@ -120,19 +120,19 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "201": {
-                        "description": "Actor Added",
+                        "description": "Актер добавлен",
                         "schema": {
                             "$ref": "#/definitions/controllers.CreateActorResponse"
                         }
                     },
                     "400": {
-                        "description": "Invalid request payload",
+                        "description": "Неверный запрос",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Internal Server Error",
+                        "description": "Внутренняя ошибка сервера",
                         "schema": {
                             "type": "string"
                         }
@@ -151,14 +151,14 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Actors"
+                    "Актеры"
                 ],
-                "summary": "Delete an actor",
+                "summary": "Удалить актера",
                 "operationId": "delete-actor",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "Actor ID",
+                        "description": "Идентификатор актера",
                         "name": "id",
                         "in": "query",
                         "required": true
@@ -166,19 +166,19 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "Actor deleted successfully",
+                        "description": "Актер успешно удален",
                         "schema": {
                             "$ref": "#/definitions/controllers.DeleteActorResponse"
                         }
                     },
                     "400": {
-                        "description": "Actor ID is required",
+                        "description": "Требуется идентификатор актера",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Failed to delete actor or its associations",
+                        "description": "Не удалось удалить актера или его связи",
                         "schema": {
                             "type": "string"
                         }
@@ -197,14 +197,14 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Actors"
+                    "Актеры"
                 ],
-                "summary": "Get actor by ID",
+                "summary": "Получить актера по идентификатору",
                 "operationId": "read-actor-by-id",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "Actor ID",
+                        "description": "Идентификатор актера",
                         "name": "id",
                         "in": "query",
                         "required": true
@@ -212,25 +212,25 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "Actor details",
+                        "description": "Подробности актера",
                         "schema": {
                             "$ref": "#/definitions/controllers.ReadActorResponse"
                         }
                     },
                     "400": {
-                        "description": "Actor ID is required",
+                        "description": "Необходим идентификатор актера",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "404": {
-                        "description": "Actor not found",
+                        "description": "Актер не найден",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Failed to fetch actor",
+                        "description": "Ошибка при получении актера",
                         "schema": {
                             "type": "string"
                         }
@@ -252,20 +252,20 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Actors"
+                    "Актеры"
                 ],
-                "summary": "Update an existing actor partially",
+                "summary": "Частично обновить существующего актера",
                 "operationId": "patch-actor",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "Actor ID",
+                        "description": "Идентификатор актера",
                         "name": "id",
                         "in": "query",
                         "required": true
                     },
                     {
-                        "description": "Patch data for updating the actor",
+                        "description": "Данные для частичного обновления актера",
                         "name": "patchData",
                         "in": "body",
                         "required": true,
@@ -276,19 +276,19 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "Actor updated successfully",
+                        "description": "Актер успешно обновлен",
                         "schema": {
                             "$ref": "#/definitions/controllers.PatchActorResponse"
                         }
                     },
                     "400": {
-                        "description": "Invalid request payload",
+                        "description": "Неверный запрос",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Failed to update actor or its associations",
+                        "description": "Не удалось обновить актера или его связи",
                         "schema": {
                             "type": "string"
                         }
@@ -310,13 +310,13 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Actors"
+                    "Актеры"
                 ],
-                "summary": "Update an existing actor",
+                "summary": "Обновить существующего актера",
                 "operationId": "update-actor",
                 "parameters": [
                     {
-                        "description": "Actor object to be updated",
+                        "description": "Объект актера для обновления",
                         "name": "actor",
                         "in": "body",
                         "required": true,
@@ -327,19 +327,19 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "Actor Updated successfully",
+                        "description": "Актер успешно обновлен",
                         "schema": {
                             "$ref": "#/definitions/controllers.UpdateActorResponse"
                         }
                     },
                     "400": {
-                        "description": "Invalid request payload",
+                        "description": "Неверный запрос",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Failed to update actor",
+                        "description": "Не удалось обновить актера",
                         "schema": {
                             "type": "string"
                         }
@@ -358,53 +358,53 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Movies"
+                    "Фильмы"
                 ],
-                "summary": "Get all movies with pagination",
+                "summary": "Получить все фильмы с пагинацией",
                 "operationId": "read-all-movies",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "Page number",
+                        "description": "Номер страницы",
                         "name": "page",
                         "in": "query",
                         "required": true
                     },
                     {
                         "type": "integer",
-                        "description": "Number of items per page",
+                        "description": "Количество элементов на странице",
                         "name": "page_size",
                         "in": "query",
                         "required": true
                     },
                     {
                         "type": "string",
-                        "description": "Field to sort by (default rating)",
+                        "description": "Поле для сортировки (по умолчанию рейтинг)",
                         "name": "sort_by",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "Sort order (ASC or DESC, default DESC)",
+                        "description": "Порядок сортировки (ASC или DESC, по умолчанию DESC)",
                         "name": "sort_order",
                         "in": "query"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "List of movies",
+                        "description": "Список фильмов",
                         "schema": {
                             "$ref": "#/definitions/controllers.ReadAllMoviesResponse"
                         }
                     },
                     "400": {
-                        "description": "Invalid page_size or page",
+                        "description": "Неверный размер страницы или номер страницы",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Internal Server Error",
+                        "description": "Внутренняя ошибка сервера",
                         "schema": {
                             "type": "string"
                         }
@@ -426,13 +426,13 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Movies"
+                    "Фильмы"
                 ],
-                "summary": "Create a new movie",
+                "summary": "Создать новый фильм",
                 "operationId": "create-movie",
                 "parameters": [
                     {
-                        "description": "Movie object to be created",
+                        "description": "Объект фильма для создания",
                         "name": "movie",
                         "in": "body",
                         "required": true,
@@ -443,19 +443,19 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "201": {
-                        "description": "Movie created successfully",
+                        "description": "Фильм успешно создан",
                         "schema": {
                             "$ref": "#/definitions/controllers.CreateMovieResponse"
                         }
                     },
                     "400": {
-                        "description": "Invalid request payload",
+                        "description": "Неверный запрос",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Internal Server Error",
+                        "description": "Внутренняя ошибка сервера",
                         "schema": {
                             "type": "string"
                         }
@@ -474,14 +474,14 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Movies"
+                    "Фильмы"
                 ],
-                "summary": "Delete a movie",
+                "summary": "Удалить фильм",
                 "operationId": "delete-movie",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "Movie ID",
+                        "description": "Идентификатор фильма",
                         "name": "id",
                         "in": "query",
                         "required": true
@@ -489,19 +489,19 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "Movie deleted successfully",
+                        "description": "Фильм успешно удален",
                         "schema": {
                             "$ref": "#/definitions/controllers.DeleteMovieResponse"
                         }
                     },
                     "400": {
-                        "description": "Movie ID is required",
+                        "description": "Требуется идентификатор фильма",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Failed to delete movie or its associations",
+                        "description": "Не удалось удалить фильм или его связи",
                         "schema": {
                             "type": "string"
                         }
@@ -520,14 +520,14 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Movies"
+                    "Фильмы"
                 ],
-                "summary": "Get movie by ID",
+                "summary": "Получить фильм по идентификатору",
                 "operationId": "read-movie-by-id",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "Movie ID",
+                        "description": "Идентификатор фильма",
                         "name": "id",
                         "in": "query",
                         "required": true
@@ -535,25 +535,25 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "Movie details",
+                        "description": "Подробности фильма",
                         "schema": {
                             "$ref": "#/definitions/controllers.ReadMovieResponse"
                         }
                     },
                     "400": {
-                        "description": "Movie ID is required",
+                        "description": "Требуется идентификатор фильма",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "404": {
-                        "description": "Movie not found",
+                        "description": "Фильм не найден",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Failed to fetch movie",
+                        "description": "Ошибка при получении фильма",
                         "schema": {
                             "type": "string"
                         }
@@ -575,20 +575,20 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Movies"
+                    "Фильмы"
                 ],
-                "summary": "Update an existing movie partially",
+                "summary": "Частично обновить существующий фильм",
                 "operationId": "patch-movie",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "Movie ID",
+                        "description": "Идентификатор фильма",
                         "name": "id",
                         "in": "query",
                         "required": true
                     },
                     {
-                        "description": "Patch data for updating the movie",
+                        "description": "Данные для частичного обновления фильма",
                         "name": "patchData",
                         "in": "body",
                         "required": true,
@@ -599,19 +599,19 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "Movie updated successfully",
+                        "description": "Фильм успешно обновлен",
                         "schema": {
                             "$ref": "#/definitions/controllers.PatchMovieResponse"
                         }
                     },
                     "400": {
-                        "description": "Invalid request payload",
+                        "description": "Неверный запрос",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Failed to update movie or its associations",
+                        "description": "Не удалось обновить фильм или его связи",
                         "schema": {
                             "type": "string"
                         }
@@ -633,13 +633,13 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Movies"
+                    "Фильмы"
                 ],
-                "summary": "Update an existing movie",
+                "summary": "Обновить существующий фильм",
                 "operationId": "update-movie",
                 "parameters": [
                     {
-                        "description": "Movie object to be updated",
+                        "description": "Объект фильма для обновления",
                         "name": "movie",
                         "in": "body",
                         "required": true,
@@ -650,19 +650,19 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "Movie updated successfully",
+                        "description": "Фильм успешно обновлен",
                         "schema": {
                             "$ref": "#/definitions/controllers.UpdateMovieResponse"
                         }
                     },
                     "400": {
-                        "description": "Invalid request payload",
+                        "description": "Неверный запрос",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Failed to update movie",
+                        "description": "Не удалось обновить фильм",
                         "schema": {
                             "type": "string"
                         }
@@ -681,46 +681,46 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Search Movies"
+                    "Поиск Фильмов"
                 ],
-                "summary": "Search for movies",
+                "summary": "Поиск фильмов",
                 "operationId": "search-movies",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "Search query",
+                        "description": "Поисковый запрос",
                         "name": "q",
                         "in": "query",
                         "required": true
                     },
                     {
                         "type": "string",
-                        "description": "Field to sort by (default rating)",
+                        "description": "Поле для сортировки (по умолчанию рейтинг)",
                         "name": "sort_by",
                         "in": "query"
                     },
                     {
                         "type": "string",
-                        "description": "Sort order (ASC or DESC, default DESC)",
+                        "description": "Порядок сортировки (ASC или DESC, по умолчанию DESC)",
                         "name": "sort_order",
                         "in": "query"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "List of matching movies",
+                        "description": "Список совпадающих фильмов",
                         "schema": {
                             "$ref": "#/definitions/controllers.SearchMovieResponse"
                         }
                     },
                     "400": {
-                        "description": "Invalid search query",
+                        "description": "Неверный поисковый запрос",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "500": {
-                        "description": "Error encoding response",
+                        "description": "Ошибка при кодировании ответа",
                         "schema": {
                             "type": "string"
                         }
@@ -730,7 +730,7 @@ const docTemplate = `{
         },
         "/api/v1/users/login": {
             "post": {
-                "description": "Log in a user with email and password",
+                "description": "Вход пользователя с использованием электронной почты и пароля",
                 "consumes": [
                     "application/json"
                 ],
@@ -738,12 +738,12 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Authentication"
+                    "Аутентификация"
                 ],
-                "summary": "Log in a user",
+                "summary": "Вход пользователя",
                 "parameters": [
                     {
-                        "description": "User credentials",
+                        "description": "Учетные данные пользователя",
                         "name": "request",
                         "in": "body",
                         "required": true,
@@ -754,25 +754,25 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "200": {
-                        "description": "Logged In Successfully",
+                        "description": "Успешный вход в систему",
                         "schema": {
                             "$ref": "#/definitions/controllers.LoginResponse"
                         }
                     },
                     "400": {
-                        "description": "Invalid request payload",
+                        "description": "Неверный запрос",
                         "schema": {
                             "$ref": "#/definitions/controllers.ErrorResponse"
                         }
                     },
                     "401": {
-                        "description": "Invalid email or password",
+                        "description": "Неверная электронная почта или пароль",
                         "schema": {
                             "$ref": "#/definitions/controllers.ErrorResponse"
                         }
                     },
                     "500": {
-                        "description": "Internal Server Error",
+                        "description": "Внутренняя ошибка сервера",
                         "schema": {
                             "$ref": "#/definitions/controllers.ErrorResponse"
                         }
@@ -787,7 +787,7 @@ const docTemplate = `{
                         "BearerAuth": []
                     }
                 ],
-                "description": "Refresh JWT access and refresh tokens",
+                "description": "Обновление доступа и обновления токенов JWT",
                 "consumes": [
                     "application/json"
                 ],
@@ -795,24 +795,24 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Authentication"
+                    "Аутентификация"
                 ],
-                "summary": "Refresh JWT tokens",
+                "summary": "Обновление токенов JWT",
                 "responses": {
                     "200": {
-                        "description": "New access and refresh tokens",
+                        "description": "Новые токены доступа и обновления",
                         "schema": {
                             "$ref": "#/definitions/controllers.RefreshTokenResponse"
                         }
                     },
                     "400": {
-                        "description": "Invalid or expired token",
+                        "description": "Неверный или истекший токен",
                         "schema": {
                             "$ref": "#/definitions/controllers.ErrorResponse"
                         }
                     },
                     "500": {
-                        "description": "Internal Server Error",
+                        "description": "Внутренняя ошибка сервера",
                         "schema": {
                             "$ref": "#/definitions/controllers.ErrorResponse"
                         }
@@ -822,7 +822,7 @@ const docTemplate = `{
         },
         "/api/v1/users/register": {
             "post": {
-                "description": "Register a new user with email and password",
+                "description": "Зарегистрировать нового пользователя с помощью электронной почты и пароля",
                 "consumes": [
                     "application/json"
                 ],
@@ -830,12 +830,12 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Authentication"
+                    "Аутентификация"
                 ],
-                "summary": "Register a new user",
+                "summary": "Зарегистрировать нового пользователя",
                 "parameters": [
                     {
-                        "description": "User information",
+                        "description": "Информация о пользователе",
                         "name": "request",
                         "in": "body",
                         "required": true,
@@ -846,19 +846,19 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "201": {
-                        "description": "User Created Successfully",
+                        "description": "Пользователь успешно создан",
                         "schema": {
                             "$ref": "#/definitions/controllers.CreateUserResponse"
                         }
                     },
                     "400": {
-                        "description": "Invalid request payload",
+                        "description": "Неверный запрос",
                         "schema": {
                             "$ref": "#/definitions/controllers.ErrorResponse"
                         }
                     },
                     "500": {
-                        "description": "Internal Server Error",
+                        "description": "Внутренняя ошибка сервера",
                         "schema": {
                             "$ref": "#/definitions/controllers.ErrorResponse"
                         }
@@ -874,11 +874,11 @@ const docTemplate = `{
                 "tags": [
                     "Healthcheck"
                 ],
-                "summary": "Perform health check",
+                "summary": "Выполнить проверку состояния",
                 "operationId": "health-check",
                 "responses": {
                     "200": {
-                        "description": "Health check response",
+                        "description": "Ответ на проверку состояния",
                         "schema": {
                             "$ref": "#/definitions/controllers.HealthCheckResponse"
                         }
@@ -892,7 +892,7 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "id": {
-                    "type": "string"
+                    "type": "integer"
                 },
                 "message": {
                     "type": "string"
@@ -1352,11 +1352,11 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
-	Host:             "localhost:8080",
-	BasePath:         "/",
+	Host:             "",
+	BasePath:         "",
 	Schemes:          []string{},
 	Title:            "Filmotek API",
-	Description:      "Fimotek Api Docs",
+	Description:      "Документация API Filmotek",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 }

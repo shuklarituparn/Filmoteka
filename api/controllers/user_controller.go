@@ -3,10 +3,6 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
-	"io"
-	"net/http"
-	"strings"
-
 	"github.com/charmbracelet/log"
 	"github.com/go-playground/validator"
 	"github.com/shuklarituparn/Filmoteka/api/models"
@@ -14,18 +10,21 @@ import (
 	"github.com/shuklarituparn/Filmoteka/pkg/hashing"
 	jwt "github.com/shuklarituparn/Filmoteka/pkg/jwt_token"
 	"gorm.io/gorm"
+	"io"
+	"net/http"
+	"strings"
 )
 
-// RegisterUser handles user registration.
-// @Summary Register a new user
-// @Description Register a new user with email and password
-// @Tags Authentication
+// RegisterUser обрабатывает регистрацию пользователя.
+// @Summary Зарегистрировать нового пользователя
+// @Description Зарегистрировать нового пользователя с помощью электронной почты и пароля
+// @Tags Аутентификация
 // @Accept json
 // @Produce json
-// @Param request body models.RegisterUserModel true "User information"
-// @Success 201 {object} CreateUserResponse "User Created Successfully"
-// @Failure 400 {object} ErrorResponse "Invalid request payload"
-// @Failure 500 {object} ErrorResponse "Internal Server Error"
+// @Param request body models.RegisterUserModel true "Информация о пользователе"
+// @Success 201 {object} CreateUserResponse "Пользователь успешно создан"
+// @Failure 400 {object} ErrorResponse "Неверный запрос"
+// @Failure 500 {object} ErrorResponse "Внутренняя ошибка сервера"
 // @Router /api/v1/users/register [post]
 func RegisterUser(db *gorm.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -42,7 +41,6 @@ func RegisterUser(db *gorm.DB) http.HandlerFunc {
 			err := Body.Close()
 			if err != nil {
 				common.ErrorResponse(w, http.StatusInternalServerError, "Internal Server Error")
-
 			}
 		}(r.Body)
 		user.Role = "USER"
@@ -83,17 +81,17 @@ func RegisterUser(db *gorm.DB) http.HandlerFunc {
 	}
 }
 
-// LoginUser handles user login.
-// @Summary Log in a user
-// @Description Log in a user with email and password
-// @Tags Authentication
+// LoginUser обрабатывает вход пользователя.
+// @Summary Вход пользователя
+// @Description Вход пользователя с использованием электронной почты и пароля
+// @Tags Аутентификация
 // @Accept json
 // @Produce json
-// @Param request body models.LoginUserModel true "User credentials"
-// @Success 200 {object} LoginResponse "Logged In Successfully"
-// @Failure 400 {object} ErrorResponse "Invalid request payload"
-// @Failure 401 {object} ErrorResponse "Invalid email or password"
-// @Failure 500 {object} ErrorResponse "Internal Server Error"
+// @Param request body models.LoginUserModel true "Учетные данные пользователя"
+// @Success 200 {object} LoginResponse "Успешный вход в систему"
+// @Failure 400 {object} ErrorResponse "Неверный запрос"
+// @Failure 401 {object} ErrorResponse "Неверная электронная почта или пароль"
+// @Failure 500 {object} ErrorResponse "Внутренняя ошибка сервера"
 // @Router /api/v1/users/login [post]
 func LoginUser(db *gorm.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
@@ -108,7 +106,6 @@ func LoginUser(db *gorm.DB) http.HandlerFunc {
 			err := Body.Close()
 			if err != nil {
 				common.ErrorResponse(w, http.StatusInternalServerError, "Internal Server Error")
-
 			}
 		}(r.Body)
 		var storedUser models.User
@@ -147,16 +144,16 @@ func LoginUser(db *gorm.DB) http.HandlerFunc {
 	}
 }
 
-// RefreshToken handles refreshing JWT tokens.
-// @Summary Refresh JWT tokens
-// @Description Refresh JWT access and refresh tokens
-// @Tags Authentication
+// RefreshToken обрабатывает обновление токенов JWT.
+// @Summary Обновление токенов JWT
+// @Description Обновление доступа и обновления токенов JWT
+// @Tags Аутентификация
 // @Accept json
 // @Security BearerAuth
 // @Produce json
-// @Success 200 {object} RefreshTokenResponse "New access and refresh tokens"
-// @Failure 400 {object} ErrorResponse "Invalid or expired token"
-// @Failure 500 {object} ErrorResponse "Internal Server Error"
+// @Success 200 {object} RefreshTokenResponse "Новые токены доступа и обновления"
+// @Failure 400 {object} ErrorResponse "Неверный или истекший токен"
+// @Failure 500 {object} ErrorResponse "Внутренняя ошибка сервера"
 // @Router /api/v1/users/refresh [get]
 func RefreshToken(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")

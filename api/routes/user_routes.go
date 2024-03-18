@@ -16,7 +16,7 @@ func UserRouter(mux *http.ServeMux) {
 
 	mux.Handle(registerRoute, http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodPost {
-			controllers.RegisterUser(config.Get_Instance())(w, r)
+			controllers.RegisterUser(config.GetInstance())(w, r)
 		} else {
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		}
@@ -24,7 +24,7 @@ func UserRouter(mux *http.ServeMux) {
 
 	mux.Handle(loginRoute, http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodPost {
-			controllers.LoginUser(config.Get_Instance())(w, r)
+			controllers.LoginUser(config.GetInstance())(w, r)
 		} else {
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		}

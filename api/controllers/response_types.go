@@ -11,7 +11,7 @@ type ErrorResponse struct {
 }
 
 type CreateActorResponse struct {
-	ID      string `json:"id"`
+	ID      int    `json:"id"`
 	Message string `json:"message"`
 }
 

@@ -138,3 +138,308 @@ SERVER_LOGS: 2024/03/16 20:00:24 Server started on port 8080
 SERVER_LOGS: 2024/03/16 20:00:24 Something went wrong while starting the server!
 SERVER_LOGS: 2024/03/16 20:00:54 Successfully connected to the database!
 SERVER_LOGS: 2024/03/16 20:00:54 Server started on port 8080
+SERVER_LOGS: 2024/03/16 23:24:31 Successfully connected to the database!
+SERVER_LOGS: 2024/03/16 23:24:32 Server started on port 8080
+SERVER_LOGS: 2024/03/16 23:33:46 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/16 23:33:46 Error finding user: record not found
+SERVER_LOGS: 2024/03/16 23:33:46 Invalid email or password
+SERVER_LOGS: 2024/03/17 01:36:54 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 01:39:57 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 01:56:15 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 02:00:47 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 02:00:49 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 02:00:49 Authorization header missing
+SERVER_LOGS: 2024/03/17 02:06:49 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 02:06:51 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 02:06:51 Authorization header missing
+SERVER_LOGS: 2024/03/17 02:07:34 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 02:07:36 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 02:07:36 Authorization header missing
+SERVER_LOGS: 2024/03/17 02:16:10 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 02:16:12 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 02:16:12 Authorization header missing
+SERVER_LOGS: 2024/03/17 02:17:46 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 02:17:49 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 02:17:49 Authorization header missing
+SERVER_LOGS: 2024/03/17 02:18:23 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 02:18:26 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 02:18:26 Authorization header missing
+SERVER_LOGS: 2024/03/17 02:19:29 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 02:19:32 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 02:19:32 Authorization header missing
+SERVER_LOGS: 2024/03/17 02:23:31 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 02:23:33 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 02:23:33 Authorization header missing
+SERVER_LOGS: 2024/03/17 02:26:13 Request received: GET /api/v1/movies/all
+SERVER_LOGS: 2024/03/17 02:26:36 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 02:26:39 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 02:26:39 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 02:27:26 Request received: GET /api/v1/movies/all
+SERVER_LOGS: 2024/03/17 02:29:35 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 02:29:38 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 02:29:38 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 02:46:23 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 02:46:25 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 02:46:25 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 02:47:47 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 02:47:50 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 02:47:50 Authorization header missing
+SERVER_LOGS: 2024/03/17 02:48:22 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 02:48:25 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 02:48:25 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 02:49:23 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 02:49:25 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 02:49:25 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 02:51:23 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 02:51:25 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 02:51:25 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 02:53:24 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 02:53:26 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 02:53:26 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 02:54:13 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 02:54:15 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 02:54:15 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 02:57:10 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 02:57:13 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 02:57:13 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 02:57:38 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 02:58:06 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 02:58:08 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 02:58:08 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 02:58:19 Request received: GET /api/v1/actors/get
+SERVER_LOGS: 2024/03/17 02:58:56 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 02:58:59 Request received: GET /api/v1/actors/get
+SERVER_LOGS: 2024/03/17 02:58:59 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 03:00:10 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 03:00:46 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 03:02:07 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 03:02:16 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 08:22:29 Successfully connected to the database!
+SERVER_LOGS: 2024/03/17 08:22:29 Server started on port 8080
+SERVER_LOGS: 2024/03/17 08:22:54 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 08:23:51 Request received: GET /api/v1/movies/all
+SERVER_LOGS: 2024/03/17 08:24:01 Request received: GET /api/v1/movies/all
+SERVER_LOGS: 2024/03/17 08:24:28 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 08:25:46 Request received: GET /api/v1/movies/all
+SERVER_LOGS: 2024/03/17 08:30:51 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 08:32:02 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 08:32:02 Request received: GET /api/v1/movies/all
+SERVER_LOGS: 2024/03/17 08:32:02 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 08:38:58 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 08:43:07 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 08:44:29 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 08:45:25 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 08:45:57 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 08:45:58 Request received: POST /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 08:45:58 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 08:51:43 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 08:51:44 Request received: POST /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 08:51:44 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 09:02:48 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 09:02:49 Request received: POST /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 09:02:49 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 09:04:43 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 09:04:44 Request received: POST /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 09:04:44 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 09:05:37 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 09:05:38 Request received: POST /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 09:05:38 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 09:06:53 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 09:06:54 Request received: POST /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 09:06:54 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 09:09:17 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 09:09:18 Request received: POST /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 09:09:18 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 09:20:26 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 09:20:26 Request received: POST /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 09:20:26 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 09:20:42 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 09:20:43 Request received: POST /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 09:20:43 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 09:20:56 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 09:20:57 Request received: POST /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 09:20:57 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 09:21:15 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 09:21:16 Request received: POST /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 09:21:16 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 09:23:47 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 09:23:47 Authorization header missing
+SERVER_LOGS: 2024/03/17 09:25:39 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 09:25:40 Request received: POST /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 09:25:40 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 09:25:55 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 09:25:56 Request received: POST /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 09:25:56 Token Not Valid
+SERVER_LOGS: 2024/03/17 09:28:19 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 09:28:20 Request received: POST /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 09:29:15 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 09:29:16 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 09:30:33 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 09:30:33 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 10:08:36 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 10:08:36 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 10:09:08 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 10:09:09 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 10:10:49 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 10:10:50 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 10:16:09 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 10:16:11 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 10:16:20 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 10:16:21 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 10:20:46 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 10:20:47 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 10:21:08 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 10:21:09 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 10:21:26 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 10:21:27 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 10:21:27 Token Not Valid
+SERVER_LOGS: 2024/03/17 11:38:33 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 11:38:34 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 11:38:34 Token Not Valid
+SERVER_LOGS: 2024/03/17 11:39:26 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 11:39:26 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 11:39:26 Authorization header missing
+SERVER_LOGS: 2024/03/17 11:40:25 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 11:40:26 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 11:40:26 Authorization header missing
+SERVER_LOGS: 2024/03/17 11:42:45 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 11:42:46 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 11:42:46 Authorization header missing
+SERVER_LOGS: 2024/03/17 11:43:45 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 11:43:45 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 11:43:45 Authorization header missing
+SERVER_LOGS: 2024/03/17 11:44:02 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 11:44:03 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 11:44:03 Authorization header missing
+SERVER_LOGS: 2024/03/17 11:44:35 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 11:44:35 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 11:44:35 Authorization header missing
+SERVER_LOGS: 2024/03/17 11:50:07 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 11:51:01 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 11:58:23 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 12:00:34 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 12:12:21 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 12:12:22 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 12:12:22 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 12:13:06 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 12:13:07 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 12:13:07 Authorization header missing
+SERVER_LOGS: 2024/03/17 12:13:33 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 12:13:34 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 12:13:34 Authorization header missing
+SERVER_LOGS: 2024/03/17 12:16:13 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 12:16:14 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 12:16:14 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 12:22:09 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 12:22:10 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 12:22:10 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 12:45:43 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 12:45:43 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 12:45:43 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 12:46:04 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 12:46:05 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 12:46:05 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 12:46:26 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 12:46:26 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 12:46:26 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 13:03:28 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 13:03:28 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 13:03:28 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 13:05:34 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 13:05:34 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 13:05:34 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 13:07:00 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 13:07:01 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 13:07:01 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 13:07:17 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 13:07:18 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 13:07:18 Authorization header missing
+SERVER_LOGS: 2024/03/17 13:22:23 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 13:22:24 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 13:22:24 Authorization header missing
+SERVER_LOGS: 2024/03/17 13:22:44 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 13:22:45 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 13:22:45 Authorization header missing
+SERVER_LOGS: 2024/03/17 13:27:17 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 13:27:17 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 13:27:17 Authorization header missing
+SERVER_LOGS: 2024/03/17 13:29:21 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 13:29:22 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 13:29:22 Authorization header missing
+SERVER_LOGS: 2024/03/17 13:30:05 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 13:32:31 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 13:35:00 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 13:37:30 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 13:37:30 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 14:02:03 Successfully connected to the database!
+SERVER_LOGS: 2024/03/17 14:02:03 Server started on port 8080
+SERVER_LOGS: 2024/03/17 14:02:08 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 14:02:18 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 14:02:18 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 14:03:05 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 14:03:05 Authorization header missing
+SERVER_LOGS: 2024/03/17 14:03:31 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 14:03:31 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 14:10:51 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 14:10:51 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 14:11:01 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 14:11:06 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 14:11:06 Invalid authorization header format
+SERVER_LOGS: 2024/03/17 14:14:44 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 14:15:18 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 14:16:55 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 14:16:55 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 14:16:55 Authorization header missing
+SERVER_LOGS: 2024/03/17 14:18:20 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 14:18:21 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 16:37:20 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 16:37:23 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 16:37:23 Authorization header missing
+SERVER_LOGS: 2024/03/17 16:37:52 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 16:37:54 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 16:37:54 Authorization header missing
+SERVER_LOGS: 2024/03/17 16:43:01 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 16:43:03 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 16:43:03 Authorization header missing
+SERVER_LOGS: 2024/03/17 16:54:52 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 16:54:55 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 16:54:55 Authorization header missing
+SERVER_LOGS: 2024/03/17 16:56:50 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 16:56:50 Authorization header missing
+SERVER_LOGS: 2024/03/17 17:01:43 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 17:01:43 Authorization header missing
+SERVER_LOGS: 2024/03/17 17:10:52 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 17:10:52 Error finding user: record not found
+SERVER_LOGS: 2024/03/17 17:10:52 Invalid email or password
+SERVER_LOGS: 2024/03/17 17:50:39 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 17:53:42 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 17:54:39 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 17:54:42 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 17:55:22 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 17:55:25 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 17:59:19 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 17:59:21 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 18:08:56 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 18:08:58 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 18:09:38 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 18:09:41 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 20:03:15 Request received: GET /api/v1/actors/get
+SERVER_LOGS: 2024/03/17 20:03:15 Token Not Valid
+SERVER_LOGS: 2024/03/17 20:04:48 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 20:23:09 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/17 20:25:40 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 20:25:40 Authorization header missing
+SERVER_LOGS: 2024/03/17 20:28:58 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/17 22:57:00 Successfully connected to the database!
+SERVER_LOGS: 2024/03/17 22:57:00 Server started on port 8080
+SERVER_LOGS: 2024/03/17 23:35:40 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/18 00:29:47 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/18 00:29:47 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/18 01:00:00 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/18 01:00:44 Request received: POST /api/v1/actors/get
+SERVER_LOGS: 2024/03/18 01:00:49 Request received: GET /api/v1/actors/get
+SERVER_LOGS: 2024/03/18 01:00:49 Actor not found
+SERVER_LOGS: 2024/03/18 01:00:53 Request received: GET /api/v1/actors/get
+SERVER_LOGS: 2024/03/18 01:00:53 Actor not found
+SERVER_LOGS: 2024/03/18 01:00:59 Request received: GET /api/v1/actors/get
+SERVER_LOGS: 2024/03/18 01:01:48 Request received: GET /api/v1/actors/all

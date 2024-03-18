@@ -3,42 +3,57 @@ version: "3"
 services:
   grafana:
     image: grafana/grafana
+    environment:
+      - GF_SMTP_ENABLED=true
+      - GF_SMTP_HOST=<>
+      - GF_SMTP_USER=<>
+      - GF_SMTP_PASSWORD=<>
+      - GF_SMTP_SKIP_VERIFY=false
+      - GF_SMTP_FROM_NAME=grafana
+      - GF_SMTP_FROM_ADDRESS=<>
     ports:
       - "3000:3000"
+
   prometheus:
     build: ./internal/prometheus
     ports:
       - "9090:9090"
+
   app:
     container_name: filmotek
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "8085:8085"
     depends_on:
       - postgres
     env_file:
       - .env
+
   postgres:
-    image: postgres
+    image: postgres:15.4
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: <>
+      POSTGRES_PASSWORD: <>
       POSTGRES_DB: filmotek
+      POSTGRES_INITDB_ARGS: "--auth-host=scram-sha-256"
     volumes:
-      - db_data:/var/lib/postgresql/data
-      - ./init/db_data.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+      - my_postgres_data:/var/lib/postgresql/data
+      - ./init/db_data.sql:/docker-entrypoint-initdb.d/db_data.sql
+
   pgadmin-compose:
     image: dpage/pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: rtprnshukla@gmail.com
-      PGADMIN_DEFAULT_PASSWORD: IAmRituparnshukla123
+      PGADMIN_DEFAULT_EMAIL: <>
+      PGADMIN_DEFAULT_PASSWORD: <>
+      PGADMIN_CONFIG_WTF_CSRF_CHECK_DEFAULT: "False"
     ports:
-      - "16543:5000"
+      - "16543:80"
     depends_on:
       - postgres
+
 volumes:
-  db_data:
+  my_postgres_data:
