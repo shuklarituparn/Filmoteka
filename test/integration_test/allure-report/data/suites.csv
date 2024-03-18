@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Mar 18 22:18:21 MSK 2024","Mon Mar 18 22:18:23 MSK 2024","1269","","TestUserLogin","","","","Checking user login","Testing if user can login into the system"
