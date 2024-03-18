@@ -1,6 +1,6 @@
 module github.com/shuklarituparn/Filmoteka
 
-go 1.22.1
+go 1.22
 
 require (
 	github.com/charmbracelet/log v0.3.1
