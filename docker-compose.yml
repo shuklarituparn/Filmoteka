@@ -21,9 +21,7 @@ services:
 
   app:
     container_name: filmotek
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image:  rituparnshukla/filmoteka:latest
     ports:
       - "8085:8085"
     depends_on:
