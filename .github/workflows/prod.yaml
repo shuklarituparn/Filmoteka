@@ -1,4 +1,4 @@
-name: Test, Build and Deploy
+
 
 on:
   push:
@@ -9,8 +9,7 @@ on:
 jobs:
 
   test:
-    runs-on: self-hosted
-    needs: build
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -19,14 +18,21 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version: '1.22'
+
+      - name: Cache Go modules
+        uses: actions/cache@v2
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
 
       - name: Run tests
         run: go test ./...
 
-
-
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
+    needs: test
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -35,6 +41,14 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version: '1.22'
+
+      - name: Cache Go modules
+        uses: actions/cache@v2
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
 
       - name: Build Docker image
         run: |
@@ -48,5 +62,3 @@ jobs:
 
       - name: Push Docker image
         run: docker push rituparnshukla/filmoteka:latest
-
-
