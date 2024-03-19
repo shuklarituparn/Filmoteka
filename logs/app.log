@@ -453,3 +453,33 @@ SERVER_LOGS: 2024/03/18 20:43:47 Request received: POST /api/v1/users/login
 SERVER_LOGS: 2024/03/18 20:43:48 Request received: GET /api/v1/actors/all
 SERVER_LOGS: 2024/03/18 20:44:28 Request received: POST /api/v1/users/login
 SERVER_LOGS: 2024/03/18 20:44:29 Request received: GET /api/v1/actors/all
+SERVER_LOGS: 2024/03/19 15:17:37 Error connecting to the database: failed to connect to `host=postgres user=postgres database=filmotek`: hostname resolving error (lookup postgres on 127.0.0.53:53: server misbehaving)
+SERVER_LOGS: 2024/03/19 15:17:37 failed to connect to `host=postgres user=postgres database=filmotek`: hostname resolving error (lookup postgres on 127.0.0.53:53: server misbehaving)
+SERVER_LOGS: 2024/03/19 15:17:37 Error querying admin user: failed to connect to `host=postgres user=postgres database=filmotek`: hostname resolving error (lookup postgres on 127.0.0.53:53: server misbehaving)
+SERVER_LOGS: 2024/03/19 15:17:37 Successfully connected to the database!
+SERVER_LOGS: 2024/03/19 15:17:37 Server started on port 8085
+SERVER_LOGS: 2024/03/19 15:18:00 Error connecting to the database: failed to connect to `host=postgres user=postgres database=filmotek`: hostname resolving error (lookup postgres on 127.0.0.53:53: server misbehaving)
+SERVER_LOGS: 2024/03/19 15:18:00 failed to connect to `host=postgres user=postgres database=filmotek`: hostname resolving error (lookup postgres on 127.0.0.53:53: server misbehaving)
+SERVER_LOGS: 2024/03/19 15:18:00 Error querying admin user: failed to connect to `host=postgres user=postgres database=filmotek`: hostname resolving error (lookup postgres on 127.0.0.53:53: server misbehaving)
+SERVER_LOGS: 2024/03/19 15:18:00 Successfully connected to the database!
+SERVER_LOGS: 2024/03/19 15:18:00 Server started on port 8085
+SERVER_LOGS: 2024/03/19 15:18:52 Error connecting to the database: failed to connect to `host=postgres user=postgres database=filmotek`: hostname resolving error (lookup postgres on 127.0.0.53:53: server misbehaving)
+SERVER_LOGS: 2024/03/19 15:18:52 failed to connect to `host=postgres user=postgres database=filmotek`: hostname resolving error (lookup postgres on 127.0.0.53:53: server misbehaving)
+SERVER_LOGS: 2024/03/19 15:18:53 Error querying admin user: failed to connect to `host=postgres user=postgres database=filmotek`: hostname resolving error (lookup postgres on 127.0.0.53:53: server misbehaving)
+SERVER_LOGS: 2024/03/19 15:18:53 Successfully connected to the database!
+SERVER_LOGS: 2024/03/19 15:18:53 Server started on port 8085
+SERVER_LOGS: 2024/03/19 15:19:28 Error connecting to the database: failed to connect to `host=postgres user=postgres database=filmotek`: hostname resolving error (lookup postgres on 127.0.0.53:53: server misbehaving)
+SERVER_LOGS: 2024/03/19 15:19:28 failed to connect to `host=postgres user=postgres database=filmotek`: hostname resolving error (lookup postgres on 127.0.0.53:53: server misbehaving)
+SERVER_LOGS: 2024/03/19 15:19:29 Error querying admin user: failed to connect to `host=postgres user=postgres database=filmotek`: hostname resolving error (lookup postgres on 127.0.0.53:53: server misbehaving)
+SERVER_LOGS: 2024/03/19 15:19:29 Successfully connected to the database!
+SERVER_LOGS: 2024/03/19 15:19:29 Server started on port 8085
+SERVER_LOGS: 2024/03/19 15:20:20 Error connecting to the database: failed to connect to `host=postgres user=postgres database=filmotek`: hostname resolving error (lookup postgres on 127.0.0.53:53: server misbehaving)
+SERVER_LOGS: 2024/03/19 15:20:20 failed to connect to `host=postgres user=postgres database=filmotek`: hostname resolving error (lookup postgres on 127.0.0.53:53: server misbehaving)
+SERVER_LOGS: 2024/03/19 15:20:21 Error querying admin user: failed to connect to `host=postgres user=postgres database=filmotek`: hostname resolving error (lookup postgres on 127.0.0.53:53: server misbehaving)
+SERVER_LOGS: 2024/03/19 15:20:21 Successfully connected to the database!
+SERVER_LOGS: 2024/03/19 15:20:21 Server started on port 8085
+SERVER_LOGS: 2024/03/19 15:22:18 Error connecting to the database: failed to connect to `host=postgres user=postgres database=filmotek`: hostname resolving error (lookup postgres on 127.0.0.53:53: server misbehaving)
+SERVER_LOGS: 2024/03/19 15:22:18 failed to connect to `host=postgres user=postgres database=filmotek`: hostname resolving error (lookup postgres on 127.0.0.53:53: server misbehaving)
+SERVER_LOGS: 2024/03/19 15:22:19 Error querying admin user: failed to connect to `host=postgres user=postgres database=filmotek`: hostname resolving error (lookup postgres on 127.0.0.53:53: server misbehaving)
+SERVER_LOGS: 2024/03/19 15:22:19 Successfully connected to the database!
+SERVER_LOGS: 2024/03/19 15:22:19 Server started on port 8085
