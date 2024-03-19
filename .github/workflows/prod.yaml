@@ -1,3 +1,5 @@
+name: Test, Build and Deploy
+
 on:
   push:
     branches:
@@ -5,22 +7,46 @@ on:
       - feature
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        go-version: ['1.22']
+
+  test:
+    runs-on: self-hosted
+    needs: build
     steps:
-      - name: Get Code
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Go ${{matrix.go-version}}
+      - name: Setup Go
         uses: actions/setup-go@v4
         with:
-          go-version: ${{matrix.go-version}}
+          go-version: '1.22'
 
-      - name: Display Go version
-        run: go version
-
-      - name: Testing
+      - name: Run tests
         run: go test ./...
+
+
+
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.22'
+
+      - name: Build Docker image
+        run: |
+          docker build -t rituparnshukla/filmoteka:latest .
+
+      - name: Push Docker image to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Push Docker image
+        run: docker push rituparnshukla/filmoteka:latest
+
+
