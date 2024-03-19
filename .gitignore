@@ -16,6 +16,9 @@ tmp/
 .env
 
 
+node_modules
+
+
 
 # Test binary, build with `go test -c`
 *.test
