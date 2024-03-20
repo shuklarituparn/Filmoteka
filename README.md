@@ -5,8 +5,8 @@
 
 ## Использование и установка
 
-- [Использование](docs/usage.md)
 - [Установка](docs/setup.md)
+- [Использование](docs/usage.md)
 - [Что еще](docs/what's_coming.md)
 
 ---
@@ -48,13 +48,13 @@
 ### Развертывание
 
 - Документация Swagger доступна на сайте: https://api.rtprnshukla.ru/docs
-- Панель мониторинга Grafana для метрик, доступная на сайте: https://monitor.rtprnshukla.ru/
+- Панель мониторинга Grafana для метрик, доступна на сайте: https://monitor.rtprnshukla.ru/
 - Метрики от Prometheus можете здесь посмотреть https://monitor.rtprnshukla.ru/metrics
 - АПИ доступен по сайту: https://api.rtprnshukla.ru/  
   ` (Проверка работоспособности отображается, если мы открываем сайт без метода)`
 - Панель управления pgAdmin доступна на сайте: https://pgadmin.rtprnshukla.ru/
 
-
+- `Сначала прочтите это` - [Установка](docs/setup.md) и - [Использование](docs/usage.md)
 
 ---
 
