@@ -31,3 +31,34 @@ SERVER_LOGS: 2024/03/19 23:01:01 invalid request payload
 SERVER_LOGS: 2024/03/19 23:01:01 invalid request payload
 SERVER_LOGS: 2024/03/19 23:01:32 invalid request payload
 SERVER_LOGS: 2024/03/19 23:04:32 invalid request payload
+SERVER_LOGS: 2024/03/20 12:08:28 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:08:29 invalid request payload
+SERVER_LOGS: 2024/03/20 12:08:29 invalid request payload
+SERVER_LOGS: 2024/03/20 12:08:29 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:08:31 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:08:33 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:08:34 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:08:36 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:08:37 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:08:39 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:08:40 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:08:42 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:08:44 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:08:45 Request received: POST /api/v1/users/register
+SERVER_LOGS: 2024/03/20 12:08:47 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:08:48 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:09:48 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:09:48 invalid request payload
+SERVER_LOGS: 2024/03/20 12:09:49 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:09:51 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:09:52 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:09:54 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:09:55 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:09:57 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:09:59 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:10:00 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:10:02 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:10:03 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:10:05 Request received: POST /api/v1/users/register
+SERVER_LOGS: 2024/03/20 12:10:07 Request received: POST /api/v1/users/login
+SERVER_LOGS: 2024/03/20 12:10:08 Request received: POST /api/v1/users/login
