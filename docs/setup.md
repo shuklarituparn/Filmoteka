@@ -3,7 +3,56 @@
 ![944960 512 (1)](https://github.com/shuklarituparn/Conversion-Microservice/assets/66947051/e31ed3cb-cfa1-454a-b664-5a2e63c579e3)
 
 
-## Первые шаги (docker-compose) 🚀
+## Сайт  🌐
+
+
+API и все методы доступны здесь: 
+
+`https://api.rtprnshukla.ru/`
+
+
+Docs доступны здесь:
+
+`https://api.rtprnshukla.ru/docs`
+`
+
+pgAdmin доступен здесь:
+
+`https://pgadmin.rtprnshukla.ru/docs`
+
+
+по умолчанию id и пароль графаны:
+
+```
+admin@example.com
+adminpassword
+```
+
+
+
+
+метрики доступны здесь:
+
+`https://monitor.rtprnshukla.ru/metrics`
+
+grafana доступна здесь:
+
+
+`https://monitor.rtprnshukla.ru/`
+
+
+по умолчанию id и пароль графаны:  
+
+```
+admin
+T=5,Wg,epq5;vfU
+```
+
+
+
+
+
+## docker-compose 🚀
 
 * Клонируйте проект, выполнив следующую команду:
 

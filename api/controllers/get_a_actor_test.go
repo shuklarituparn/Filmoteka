@@ -15,7 +15,7 @@ func TestReadAActor(t *testing.T) {
 	var db = GetDBInstance()
 	accessToken := LoginAndGetAccessToken(t, db)
 	actor := models.Actor{
-		BirthDate: "1998-05-28",
+		BirthDate: "2100-05-28",
 		FirstName: "Rituparn",
 		Gender:    "Male",
 		LastName:  "Shukla",
