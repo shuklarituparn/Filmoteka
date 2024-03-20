@@ -10,6 +10,12 @@ API и все методы доступны здесь:
 
 `https://api.rtprnshukla.ru/`
 
+по умолчанию id и пароль Admin:
+
+```
+admin@example.com
+adminpassword
+```
 
 Docs доступны здесь:
 
@@ -21,7 +27,7 @@ pgAdmin доступен здесь:
 `https://pgadmin.rtprnshukla.ru/docs`
 
 
-по умолчанию id и пароль графаны:
+по умолчанию id и пароль pgAdmin:
 
 ```
 admin@example.com

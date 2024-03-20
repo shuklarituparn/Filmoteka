@@ -1,4 +1,4 @@
-# 🎬 Фильмотек API
+# 🎬 Фильмотека API
 
 ![ezgif-5-625c0202df](https://github.com/shuklarituparn/Filmoteka/assets/66947051/fa8cbd66-27d3-4314-97ca-3940e5e96652)
 
