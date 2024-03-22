@@ -9,4 +9,4 @@ scrape_configs:
 
   - job_name: 'filmotek'
     static_configs:
-      - targets: ['filmotek:8080']
+      - targets: ['filmotek:8085']
