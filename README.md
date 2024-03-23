@@ -97,10 +97,12 @@
 
 
 ---
-## Тесты (CUTE  и Allure-Reports)
+## CUTE тесты и Allure-Reports
+
+
+Чтобы увидет allure report, запустите `allure serve` в директории `test/integration_test`
 
 `Убедитесь, что в вашей системе установлен allure`
-
 
 Руководство по установке allure
 
@@ -108,15 +110,8 @@
 
 
 
-- Чтобы запустить тесты сделайте `go test ./test/...`
-- Чтобы генерирует allure report, сделайте `allure generate`
-- Чтобы увидет allure report, запустите `allure serve` в директории `test`
+![Screenshot from 2024-03-18 22-16-31](https://github.com/shuklarituparn/Filmoteka/assets/66947051/71b5517a-c0e0-41b0-8b0a-c51bfa2f08b1)
 
-
-
-
-
-![Screenshot from 2024-03-23 16-55-17](https://github.com/shuklarituparn/Filmoteka/assets/66947051/275a788c-a262-485b-b053-1d704dc4344b)
 ![Screenshot from 2024-03-18 22-16-43](https://github.com/shuklarituparn/Filmoteka/assets/66947051/350a59da-0fe3-4358-9722-ef4882907789)
 
 

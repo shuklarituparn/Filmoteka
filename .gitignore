@@ -18,10 +18,6 @@ tmp/
 
 node_modules
 
-test/logs
-
-
-
 
 
 # Test binary, build with `go test -c`
