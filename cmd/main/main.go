@@ -59,18 +59,18 @@ func main() {
 
 	err := godotenv.Load()
 
-	var file_logger = logger.SetupLogger()
+	var fileLogger = logger.SetupLogger()
 
 	if err != nil {
 		log.Error("Error loading .env file")
-		file_logger.Println("Error loading .env file")
+		fileLogger.Println("Error loading .env file")
 	}
 
 	config.ConnectDb()
 
 	if os.Getenv("PORT") == "" {
 		log.Error("PORT environment variable not set")
-		file_logger.Println("PORT environment variable not set")
+		fileLogger.Println("PORT environment variable not set")
 		os.Exit(1)
 	}
 
@@ -91,16 +91,16 @@ func main() {
 	))
 
 	log.Info(fmt.Sprintf("Server started on port %d", port))
-	file_logger.Printf("Server started on port %d", port)
+	fileLogger.Printf("Server started on port %d", port)
 	c := cors.Default()
 
 	serverError := http.ListenAndServe(fmt.Sprintf(":%d", port), c.Handler(rootMux))
 	if serverError != nil {
 		log.Error("Something went wrong while starting the server!")
-		file_logger.Println("Something went wrong while starting the server!")
+		fileLogger.Println("Something went wrong while starting the server!")
 		panic(serverError)
 	} else {
 		log.Info("Server started successfully!")
-		file_logger.Println("Server started successfully!")
+		fileLogger.Println("Server started successfully!")
 	}
 }
