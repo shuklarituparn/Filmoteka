@@ -101,10 +101,6 @@ func TestPatchMovieWithoutBody(t *testing.T) {
 		if err != nil {
 			t.Error(err)
 		}
-		patchMovieReq, err = http.NewRequest("PATCH", "/api/v1/movies/patch?id="+strconv.Itoa(int(movieResponse.Data.ID)), bytes.NewBuffer(patchMovieJSON))
-		if err != nil {
-			t.Error(err)
-		}
 		patchMovieReq.Header.Set("Authorization", "Bearer "+accessToken)
 		patchActorRecorder := httptest.NewRecorder()
 		controllers.PatchMovie(db)(patchActorRecorder, patchMovieReq)
