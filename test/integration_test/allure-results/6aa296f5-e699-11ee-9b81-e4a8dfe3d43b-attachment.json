@@ -1,8 +1,0 @@
-{
-    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluQGV4YW1wbGUuY29tIiwicm9sZSI6IkFETUlOIiwiZXhwIjoxNzEwOTI5MzA4LCJpYXQiOjE3MTA5MjU3MDgsIm5iZiI6MTcxMDkyNTcwOH0.2jiffbnK90GWuX6ntRG4sUYbMOPI4LhuptWpIuHglRI",
-    "email": "admin@example.com",
-    "id": 1,
-    "message": "Logged In Successfully",
-    "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluQGV4YW1wbGUuY29tIiwicm9sZSI6IkFETUlOIiwiZXhwIjoxNzEwOTQzNzA4LCJpYXQiOjE3MTA5MjU3MDgsIm5iZiI6MTcxMDkyNTcwOH0.0Zt5Z1rjvn0jGKaQT6uq9TGWiNhb_bdOzYXRr8uvFMs",
-    "role": "ADMIN"
-}
